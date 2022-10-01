@@ -19,3 +19,15 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 current = true
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 474, 258 )
+texture = ExtResource( 1 )
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( 135, 236 )
+texture = ExtResource( 1 )
+
+[node name="Icon3" type="Sprite" parent="."]
+position = Vector2( 303, 44 )
+texture = ExtResource( 1 )
