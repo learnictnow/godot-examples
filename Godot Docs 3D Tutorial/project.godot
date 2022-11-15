@@ -22,6 +22,11 @@ tutorial in the official documentation."
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=720
+window/size/height=540
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
