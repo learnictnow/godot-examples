@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Line_of_sight"
-run/main_scene="res://Line_of_sight_test.tscn"
+run/main_scene="res://ShadowScene.tscn"
 config/icon="res://icon.png"
 
 [gui]
