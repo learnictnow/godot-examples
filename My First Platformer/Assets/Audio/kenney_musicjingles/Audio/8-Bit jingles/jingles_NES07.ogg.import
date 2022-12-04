@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingles_NES07.ogg-4d65eef7ea74e8c8d044625af1242fd3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/kenney_musicjingles/Audio/8-Bit jingles/jingles_NES07.ogg"
+dest_files=[ "res://.import/jingles_NES07.ogg-4d65eef7ea74e8c8d044625af1242fd3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

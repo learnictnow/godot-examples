@@ -17,6 +17,8 @@ var jump : int = 50
 # 4 Create a sprite variable and link it to the sprite node. When the node is
 # initialised.
 onready var sprite = $Sprite
+# 21 Add a variable for the audio stream player
+onready var audioPlayer = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,7 +55,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("player_jump") && is_on_floor():
 		# 16 Multiply by -1 to turn the velocity into a negative value
 		velocity.y = jump * -1
-	
+		# 22 Play the audio for the jump
+		audioPlayer.play()
 
 	# 13 Move the object, the second parameter sets the vertical axis	
 	move_and_slide(velocity, Vector2.UP)
