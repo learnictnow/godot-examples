@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Audio/kenney_musicjingles/Audio/Sax jingles/jingles_SAX00.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Images/kenney_pixelplatformer/Tiles/tile_0013.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Level1" type="Node2D"]
 
@@ -24,3 +27,18 @@ stream = ExtResource( 3 )
 volume_db = -15.0
 pitch_scale = 0.2
 autoplay = true
+
+[node name="DeathArea" type="Area2D" parent="."]
+position = Vector2( 220, 355 )
+scale = Vector2( 25, 1 )
+
+[node name="Sprite" type="Sprite" parent="DeathArea"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+shape = SubResource( 1 )
+
+[node name="SpawnPoint" type="Position2D" parent="."]
+position = Vector2( 107, 159 )
+
+[connection signal="body_entered" from="DeathArea" to="Player" method="_on_DeathArea_body_entered"]

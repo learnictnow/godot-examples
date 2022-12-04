@@ -60,3 +60,11 @@ func _physics_process(delta):
 
 	# 13 Move the object, the second parameter sets the vertical axis	
 	move_and_slide(velocity, Vector2.UP)
+
+func _on_DeathArea_body_entered(body):
+	# 23 Test object overlap
+	print("Player death")
+	# 24 Reload the scene
+	#get_tree().reload_current_scene()
+	# 25 Respawn player at location
+	position = $"../SpawnPoint".position
