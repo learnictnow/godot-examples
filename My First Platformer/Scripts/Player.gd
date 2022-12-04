@@ -8,7 +8,11 @@ var GRAVITY : int = 80
 # 3 Create a variable to store the player velocity
 # Set this to the type of a 2D vector e.g. x and y
 var velocity: Vector2 = Vector2()
-var speed: int = 10
+# 7 Create a variable to set the speed of the player
+# 20 Update the speed that the player moves
+var speed : int = 50
+# 14 Jump force
+var jump : int = 50
 
 # 4 Create a sprite variable and link it to the sprite node. When the node is
 # initialised.
@@ -24,25 +28,32 @@ func _physics_process(delta):
 	# 6 Update the y axis velocity by the time elapsed
 	velocity.y += delta * GRAVITY
 
-	#velocity.x = 0
-	# movement inputs
+	# 8 Check is the left input is pressed
+	# note player_left is the action in the input map
 	if Input.is_action_pressed("player_left"):
-		velocity.x -= speed
+		# 9 Update the velocity by the speed of the player
+		# 18 set x velocity to -speed to have fixed speed
+		velocity.x = -speed
+	# 10 do the same for the moving right
 	elif Input.is_action_pressed("player_right"):
-		velocity.x += speed
+		# 19 set x velocity to speed to have fixed speed
+		velocity.x = speed
+	# 11 If left or right is not pressed set the x velocity to 0
 	else:
 		velocity.x = 0
 
+	# 12 Flip the sprite depending on the direction of movement
 	if velocity.x < 0:
 		sprite.flip_h = false
 	elif velocity.x > 0:
 		sprite.flip_h = true
 	
-
-	# 7 Create a variable for motion and update it each time the function is
-	# called
-	var motion = velocity * delta
-	# 8 Call the move_and_collide funcion which moves the object
-	# warning-ignore:return_value_discarded
+	# 15 Detect the jump button being pressed
+	# 17 Add the is_on_floor() check to the jump condition
+	if Input.is_action_pressed("player_jump") && is_on_floor():
+		# 16 Multiply by -1 to turn the velocity into a negative value
+		velocity.y = jump * -1
 	
+
+	# 13 Move the object, the second parameter sets the vertical axis	
 	move_and_slide(velocity, Vector2.UP)
