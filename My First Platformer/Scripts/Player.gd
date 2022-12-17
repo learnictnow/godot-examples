@@ -22,8 +22,15 @@ onready var audioPlayer = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# 26 Find the obstacle node
+	var obstacle_node = get_tree().get_root().find_node("Obstacle", true, false)
+	# 27 Link up the signal and set function to run
+	obstacle_node.connect("player_hit", self, "handle_player_spotted")
 	pass # Replace with function body.
 
+# 28 function to run when the signal triggers
+func handle_player_spotted():
+	print("Received hit from obstacle")
 
 # 5 Runs the physics updates to the game
 func _physics_process(delta):
@@ -67,4 +74,7 @@ func _on_DeathArea_body_entered(body):
 	# 24 Reload the scene
 	#get_tree().reload_current_scene()
 	# 25 Respawn player at location
+	position = $"../SpawnPoint".position
+
+func respawn():
 	position = $"../SpawnPoint".position
