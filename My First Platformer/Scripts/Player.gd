@@ -76,5 +76,7 @@ func _on_DeathArea_body_entered(body):
 	# 25 Respawn player at location
 	position = $"../SpawnPoint".position
 
+# 26 Respawn function
 func respawn():
+	# 27 respawns the player
 	position = $"../SpawnPoint".position
