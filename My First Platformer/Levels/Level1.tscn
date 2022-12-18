@@ -45,10 +45,23 @@ position = Vector2( 107, 159 )
 [node name="Obstacle" parent="." instance=ExtResource( 5 )]
 position = Vector2( 198, 201 )
 
+[node name="Position2D" type="Position2D" parent="Obstacle/Positions" index="0"]
+position = Vector2( 267, 204 )
+
 [node name="Obstacle2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 38, 204 )
+
+[node name="Position2D" type="Position2D" parent="Obstacle2/Positions" index="0"]
+position = Vector2( 0, 206 )
+
+[node name="Position2D2" type="Position2D" parent="Obstacle2/Positions" index="1"]
+position = Vector2( 21, 233 )
 
 [node name="Obstacle3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 75, 160 )
 
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_DeathArea_body_entered"]
+
+[editable path="Obstacle"]
+[editable path="Obstacle2"]
+[editable path="Obstacle3"]
