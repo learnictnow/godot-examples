@@ -19,3 +19,8 @@ func _on_KillArea_body_entered(body):
 	print("Obstacle hit player")
 	# 2 Call the respawn function of the player (body) using dot notation
 	body.respawn()
+
+
+func _on_Obstacle_body_entered(body):
+	print("Player hit top of obstacle")
+	pass # Replace with function body.
