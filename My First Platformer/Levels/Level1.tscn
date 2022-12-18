@@ -48,4 +48,7 @@ position = Vector2( 198, 201 )
 [node name="Obstacle2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 38, 204 )
 
+[node name="Obstacle3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 75, 160 )
+
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_DeathArea_body_entered"]

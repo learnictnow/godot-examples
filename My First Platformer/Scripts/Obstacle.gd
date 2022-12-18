@@ -20,7 +20,9 @@ func _on_KillArea_body_entered(body):
 	# 2 Call the respawn function of the player (body) using dot notation
 	body.respawn()
 
-
-func _on_Obstacle_body_entered(body):
+func _on_TopArea_body_entered(body):
+	# 3 Print message to test that a collision / overlap has been detected.
 	print("Player hit top of obstacle")
+	# 4 Queue free destroys the node / object
+	queue_free()
 	pass # Replace with function body.
