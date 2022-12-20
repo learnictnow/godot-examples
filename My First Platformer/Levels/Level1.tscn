@@ -1,17 +1,51 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Audio/kenney_musicjingles/Audio/Sax jingles/jingles_SAX00.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Images/kenney_pixelplatformer/Tiles/tile_0013.png" type="Texture" id=4]
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Images/kenney_pixelplatformer/Tilemap/tiles_packed.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 36, -36, -36, -36, -36, -72, 36, -72 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "tiles_packed.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 360, 126 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 18, 18 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 6 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 2, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 139, 129 )
+position = Vector2( 162, 101 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 117, 202 )
@@ -45,20 +79,27 @@ position = Vector2( 107, 159 )
 [node name="Obstacle" parent="." instance=ExtResource( 5 )]
 position = Vector2( 198, 201 )
 
-[node name="Position2D" type="Position2D" parent="Obstacle/Positions" index="0"]
-position = Vector2( 267, 204 )
-
 [node name="Obstacle2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 38, 204 )
 
-[node name="Position2D" type="Position2D" parent="Obstacle2/Positions" index="0"]
-position = Vector2( 0, 206 )
+[node name="Position2D" type="Position2D" parent="Obstacle2/Waypoints" index="0"]
+position = Vector2( 66, 240 )
 
-[node name="Position2D2" type="Position2D" parent="Obstacle2/Positions" index="1"]
-position = Vector2( 21, 233 )
+[node name="Position2D2" type="Position2D" parent="Obstacle2/Waypoints" index="1"]
+position = Vector2( 0, 249 )
 
 [node name="Obstacle3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 75, 160 )
+
+[node name="Position2D" type="Position2D" parent="Obstacle3/Waypoints" index="0"]
+position = Vector2( 38, 165 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 5 )
+cell_size = Vector2( 18, 18 )
+cell_quadrant_size = 18
+format = 1
+tile_data = PoolIntArray( -1114126, 0, 1, -1114125, 0, 2, -1114124, 0, 2, -1114123, 0, 2, -1114122, 0, 2, -1114121, 0, 2, -1114120, 0, 2, -1114119, 0, 2, -1114118, 0, 2, -1114117, 0, 3, -1048583, 0, 2, -983020, 1, 0, -983019, 1, 0, -983018, 1, 0, -983017, 1, 0, -983016, 1, 0, -851970, 1, 0, -851969, 1, 0, -917504, 1, 0, -917503, 1, 0, -917502, 1, 0, -917501, 1, 0, -917500, 1, 0, -917498, 536870913, 0, -917497, 536870913, 0, -917496, 536870913, 0, -917495, 536870913, 0, -917494, 536870913, 0, -917493, 536870913, 0, -917492, 536870913, 0, -917491, 536870913, 0, -917490, 1, 0, -917489, 1, 0, -917488, 1, 0, -917487, 1, 0, -917486, 1, 0, -917485, 1, 0, -786439, 0, 0, -786438, 0, 0, -786437, 0, 0, -786436, 0, 0, -786435, 0, 0, -786434, 0, 0, -786433, 0, 0, -851968, 0, 0, -851967, 0, 0, -851966, 0, 0, -851965, 0, 0, -851964, 0, 0, -851963, 1, 0, -851962, 1, 0, -851961, 1, 0, -851960, 1, 0, -851959, 1, 0, -851958, 1, 0, -851957, 1, 0, -851956, 1, 0, -720904, 0, 0, -720897, 0, 0, -786432, 0, 0, -786431, 0, 0, -786430, 0, 0, -786429, 0, 0, -589831, 0, 0, -524303, 1, 0, -524302, 1, 0, -524301, 1, 0, -524300, 1, 0, -524299, 1, 0, -524298, 1, 0, -589808, 1, 0, -589807, 1, 0, -589806, 1, 0, -589805, 1, 0, -589804, 1, 0, -589803, 1, 0, -589802, 1, 0, -589801, 1, 0, -589800, 1, 0, -458769, 1, 0, -458768, 1, 0, -458767, 1, 0, -458762, 1, 0, -524273, 1, 0, -524272, 1, 0, -524271, 1, 0, -524270, 1, 0, -524269, 1, 0, -524268, 1, 0, -524263, 1, 0, -393225, 1073741828, 0, -458739, 1, 0, -458738, 1, 0, -458737, 1, 0, -458735, 5, 0, -458734, 5, 0, -458733, 5, 0, -458732, 5, 0, -458731, 5, 0, -262160, 1073741825, 0, -327673, 5, 0, -327672, 5, 0, -327671, 5, 0, -327670, 5, 0, -327669, 5, 0, -327668, 5, 0, -327667, 5, 0, -327666, 5, 0, -327661, 7, 0, -327660, 7, 0, -327659, 7, 0, -327658, 7, 0, -327657, 7, 0, -327656, 7, 0, -327655, 7, 0, -327654, 7, 0, -327653, 7, 0, -327652, 7, 0, -262141, 5, 0, -262140, 5, 0, -262139, 5, 0, -262138, 5, 0, -262137, 5, 0, -262126, 7, 0, -262125, 7, 0, 65549, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 1, 0, 262165, 1, 0, 327696, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 393231, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 458766, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 589832, 0, 0, 589833, 0, 0, 655369, 0, 0, 655370, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786456, 0, 0, 786457, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0 )
 
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_DeathArea_body_entered"]
 

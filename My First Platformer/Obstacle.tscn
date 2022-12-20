@@ -42,7 +42,7 @@ scale = Vector2( 0.976091, 0.939518 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Positions" type="Node" parent="."]
+[node name="Waypoints" type="Node" parent="."]
 
 [connection signal="body_entered" from="TopArea" to="." method="_on_TopArea_body_entered"]
 [connection signal="body_entered" from="KillArea" to="." method="_on_KillArea_body_entered"]

@@ -10,41 +10,44 @@ extends RigidBody2D
 var locations = []
 # 6 Target position index
 var target_pos_index = 0
+# 7 Variable to store the target position of the obstacle
 var target_pos = global_position
 
-var velocity = Vector2()
+# 13 Set the speed for the obstacle to move at
 var speed = 25;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# 7 Set the size of the array
-	#locations = new Vector2[num_positions]
+	# 8 Add the starting position to the array
 	locations.append(global_position)
+	# 9 Set the target position to the starting position of the array
 	target_pos = locations[0]
 	
-	for n in get_node("Positions").get_children():
+	# 10 Go through each node added as children of Waypoints and get the position
+	for n in get_node("Waypoints").get_children():
 		locations.append(n.global_position)
-	
-	print(locations)
-	
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# 11 Call the local function that handles movement
 	_move_around_locations(delta)
 	
 	pass
 
+# 12 Function to move the obstacle around waypoints
 func _move_around_locations(delta):
+	# 15 Check if the obstacle is at the target position
 	if position == target_pos:
-		# get next position
+		# 16 Get next position
 		target_pos_index = target_pos_index + 1
-		
+		# 17 If next position falls off end of the array, reset to start of the array
 		if target_pos_index + 1 > locations.size():
 			target_pos_index = 0
+		# 18 Update target position to new location
 		target_pos = locations[target_pos_index]
-		print(position)
+		
+	# 14 Move the obstacle towards the target position at set speed
 	position = position.move_toward(target_pos, delta * speed)
 
 func _on_KillArea_body_entered(body):
