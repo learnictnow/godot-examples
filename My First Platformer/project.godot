@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="My First Platformer"
-run/main_scene="res://Levels/Level1.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://Assets/Images/kenney_pixelplatformer/Characters/character_0000.png"
 
 [display]
