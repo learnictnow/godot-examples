@@ -1,4 +1,5 @@
 extends RigidBody2D
+const SCORE_MANAGER := preload("res://ScoreManager.gd")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -57,6 +58,9 @@ func _on_KillArea_body_entered(body):
 	body.respawn()
 
 func _on_TopArea_body_entered(body):
+	# 5 Run the score_points function and alloate 2 points
+	body.score_points(2)
+	
 	# 3 Print message to test that a collision / overlap has been detected.
 	print("Player hit top of obstacle")
 	# 4 Queue free destroys the node / object

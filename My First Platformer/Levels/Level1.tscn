@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Assets/Images/kenney_pixelplatformer/Tiles/tile_0013.png" type="Texture" id=4]
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Images/kenney_pixelplatformerindustrialexpansion/Tilemap/tilemap.png" type="Texture" id=6]
-[ext_resource path="res://HeadsUpDisplay.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -270,8 +269,6 @@ cell_size = Vector2( 18, 18 )
 cell_quadrant_size = 18
 format = 1
 tile_data = PoolIntArray( 524295, 1, 0, 524296, 2, 0, 524297, 2, 0, 524298, 3, 0, 589837, 0, 0, 851979, 1, 0, 851980, 2, 0, 851981, 2, 0, 851982, 2, 0, 851983, 3, 0, 983050, 4, 0, 983051, 4, 1, 983052, 4, 2, 983053, 4, 1, 983054, 4, 1, 983055, 4, 65539 )
-
-[node name="Control" parent="." instance=ExtResource( 7 )]
 
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_DeathArea_body_entered"]
 
