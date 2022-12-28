@@ -72,3 +72,8 @@ func _on_DeathArea_body_entered(body):
 func respawn():
 	# 27 respawns the player
 	position = $"../SpawnPoint".position
+
+# 28 Score points function that calls the score points function on the UI	
+func score_points(points):
+	# 29 Get the Label on the node that has the score points script attached
+	get_node("Control/CanvasLayer/Label").score_points(points)
