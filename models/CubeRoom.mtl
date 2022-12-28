@@ -1,0 +1,8 @@
+# Made in Blockbench 4.5.2
+newmtl m_86908956-4300-36c4-a2cd-90bb09abe236
+map_Kd floortexture.png 
+newmtl m_889ff657-121e-20a7-ab92-9be671ed82b8
+map_Kd texture.png 
+newmtl m_e77efc51-2025-13f4-636a-495ff5a4db51
+map_Kd pyramidtexture.png 
+newmtl none
