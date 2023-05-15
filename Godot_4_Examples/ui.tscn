@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl1ng1qnnjhga"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_ieu01"]
+[ext_resource type="Theme" uid="uid://bigmx8xfdnw8c" path="res://themes/button_theme.tres" id="2_ta51p"]
+[ext_resource type="Texture2D" uid="uid://bahh52jqmdx5g" path="res://assets/images/kiwi.png" id="3_irk4p"]
+
+[node name="UI" type="Node"]
+script = ExtResource("1_ieu01")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Example Control Schemes"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Button_3rd_person" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "Third Person Controller
+"
+flat = true
+
+[node name="Button_FPS" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "FPS"
+flat = true
+
+[node name="Button_SpaceFlight" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "Spaceflight"
+flat = true
+
+[node name="Button_Car" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "Vehicle"
+flat = true
+
+[node name="Button_Point_And_Click" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "Move to Click"
+flat = true
+
+[node name="Button_Twin_Stick" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+disabled = true
+text = "Twin Stick"
+flat = true
+
+[node name="Button_2D_Platformer" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "2D Platformer Controls"
+flat = true
+
+[node name="Kiwi" type="Sprite2D" parent="."]
+position = Vector2(128, 520)
+texture = ExtResource("3_irk4p")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_3rd_person" to="." method="_on_button_3_rd_person_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_FPS" to="." method="_on_button_fps_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_SpaceFlight" to="." method="_on_button_space_flight_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Car" to="." method="_on_button_car_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Point_And_Click" to="." method="_on_button_point_and_click_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Twin_Stick" to="." method="_on_button_car_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_2D_Platformer" to="." method="_on_button_2d_platformer_pressed"]

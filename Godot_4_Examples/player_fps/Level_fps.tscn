@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://jgtdi56j2818"]
+
+[ext_resource type="PackedScene" uid="uid://caqsvbwepo80r" path="res://Level.tscn" id="1_brdg7"]
+[ext_resource type="PackedScene" uid="uid://cmqlx2hql2u5v" path="res://player_fps/player_fps.tscn" id="2_qsei3"]
+[ext_resource type="PackedScene" uid="uid://ccuprhhxph2xg" path="res://ball.tscn" id="3_gmyjg"]
+
+[node name="Level_3rd_person" type="Node3D"]
+
+[node name="StaticBody3D" parent="." instance=ExtResource("1_brdg7")]
+
+[node name="Player" parent="." instance=ExtResource("2_qsei3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76145, 4.27663, 5.48688)
+
+[node name="Ball" parent="." instance=ExtResource("3_gmyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05055, 2.48235, -1.21931)

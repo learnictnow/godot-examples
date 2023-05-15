@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" uid="uid://dymqdk015yesg" path="res://assets/models/kenney_commercial/skyscraperA.glb" id="1_0d3bi"]
+[ext_resource type="PackedScene" uid="uid://cnxm181sgeqdv" path="res://assets/models/kenney_commercial/skyscraperB.glb" id="2_accp3"]
+[ext_resource type="PackedScene" uid="uid://b317f2agpaesk" path="res://assets/models/kenney_commercial/skyscraperC.glb" id="3_x5lh8"]
+[ext_resource type="PackedScene" uid="uid://bg3fosl7o0spl" path="res://assets/models/kenney_commercial/skyscraperD.glb" id="4_sxnd2"]
+[ext_resource type="PackedScene" uid="uid://iuavjw4symas" path="res://assets/models/kenney_commercial/skyscraperE.glb" id="5_4agyy"]
+[ext_resource type="PackedScene" uid="uid://q5n8qivqeqrb" path="res://assets/models/kenney_commercial/skyscraperF.glb" id="6_6xux4"]
+[ext_resource type="PackedScene" uid="uid://dafmo5le1ugn0" path="res://assets/models/kenney_commercial/small_buildingA.glb" id="7_m0nxu"]
+[ext_resource type="PackedScene" uid="uid://dtwkng1nhux22" path="res://assets/models/kenney_commercial/small_buildingB.glb" id="8_6nrkf"]
+[ext_resource type="PackedScene" uid="uid://bnyca2atwccp1" path="res://assets/models/kenney_commercial/small_buildingC.glb" id="9_0c6qq"]
+[ext_resource type="PackedScene" uid="uid://bh1nrxdtojt56" path="res://assets/models/kenney_commercial/small_buildingD.glb" id="10_7ny2g"]
+[ext_resource type="PackedScene" uid="uid://1ifbu7jt02la" path="res://assets/models/kenney_commercial/small_buildingE.glb" id="11_stlyk"]
+
+[node name="BuildingGroup" type="Node3D"]
+
+[node name="skyscraperA" parent="." instance=ExtResource("1_0d3bi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7258, 0, 1.73388)
+
+[node name="skyscraperB" parent="." instance=ExtResource("2_accp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2014, 0, 0)
+
+[node name="skyscraperC" parent="." instance=ExtResource("3_x5lh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6325, 0, -2.51454)
+
+[node name="skyscraperD" parent="." instance=ExtResource("4_sxnd2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5256, 0, 3.02847)
+
+[node name="skyscraperE" parent="." instance=ExtResource("5_4agyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8937, 0, 0)
+
+[node name="skyscraperF" parent="." instance=ExtResource("6_6xux4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1862, 0, 1.6311)
+
+[node name="small_buildingA" parent="." instance=ExtResource("7_m0nxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1883, 0, 0)
+
+[node name="small_buildingB" parent="." instance=ExtResource("8_6nrkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1095, 0, 3.35002)
+
+[node name="small_buildingC" parent="." instance=ExtResource("9_0c6qq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6791, 0, -2.43459)
+
+[node name="small_buildingD" parent="." instance=ExtResource("10_7ny2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7218, 0, 3.134)
+
+[node name="small_buildingE" parent="." instance=ExtResource("11_stlyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6041, 0, -3.22555)

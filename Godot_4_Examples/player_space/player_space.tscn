@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://player_space/player_space.gd" id="1_4o1k5"]
+[ext_resource type="PackedScene" uid="uid://covr2b8cdky7d" path="res://assets/models/plane.glb" id="1_mqotk"]
+[ext_resource type="Script" path="res://player_space/FollowCam.gd" id="3_crcir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y071l"]
+
+[node name="player_space" type="CharacterBody3D"]
+script = ExtResource("1_4o1k5")
+
+[node name="plane" parent="." instance=ExtResource("1_mqotk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.935629, -0.519794, -0.987608)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.57702, 0, 0, 0, 1, 0, 0, 0, 4.87725, 0, 0, 0)
+shape = SubResource("BoxShape3D_y071l")
+
+[node name="LeftLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.5)
+spot_range = 15.0
+spot_angle = 15.0
+
+[node name="RightLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -0.5)
+spot_range = 15.0
+spot_angle = 15.0
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.5)
+current = true
+script = ExtResource("3_crcir")

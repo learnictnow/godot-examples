@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bngnndv5b5dh1"]
+
+[ext_resource type="Texture2D" uid="uid://ribrhne1acn5" path="res://icon.svg" id="1_nrvvm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbpyk"]
+
+[node name="Player2Din3D" type="CharacterBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.934273, 0, 0.356559, 0, 1, 0, -0.356559, 0, 0.934273, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_nrvvm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qbpyk")

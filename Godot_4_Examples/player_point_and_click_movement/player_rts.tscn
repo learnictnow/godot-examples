@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" uid="uid://covr2b8cdky7d" path="res://assets/models/plane.glb" id="1_2yxv3"]
+[ext_resource type="Script" path="res://player_point_and_click_movement/player_rts.gd" id="1_wln2m"]
+[ext_resource type="Script" path="res://FollowCamera.gd" id="2_qi8so"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_govvo"]
+size = Vector3(1, 1, 4)
+
+[node name="player_rts" type="CharacterBody3D"]
+script = ExtResource("1_wln2m")
+
+[node name="plane" parent="." instance=ExtResource("1_2yxv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02963, -0.597373, -0.972424)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_govvo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.4515)
+script = ExtResource("2_qi8so")
+target_path = NodePath("..")
+offset = Vector3(0, 25, 15)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 2.0
+debug_enabled = true
