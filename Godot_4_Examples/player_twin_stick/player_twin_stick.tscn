@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmgrm7c0p84sa"]
+
+[ext_resource type="Script" path="res://player_twin_stick/player_twin_stick.gd" id="1_rx2lq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmscp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jgga3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5o8ar"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yoajm"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wo5oj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_53uy5"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgqbc"]
+albedo_color = Color(1, 0.509804, 1, 1)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08629, 0)
+script = ExtResource("1_rx2lq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wmscp")
+
+[node name="body" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
+mesh = SubResource("CapsuleMesh_jgga3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.466689, 0, 0)
+mesh = SubResource("SphereMesh_5o8ar")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yoajm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3781, 0, 0)
+mesh = SubResource("SphereMesh_5o8ar")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo5oj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.058187, 1.01204, 0.449938)
+mesh = SubResource("BoxMesh_53uy5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_fgqbc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0712362, 0.997459, 0, -0.997459, 0.0712362, 0, 50, 0)
+
+[node name="BulletSpawnPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.902605)

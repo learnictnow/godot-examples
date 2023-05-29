@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqkgya5tvu6em"]
+
+[ext_resource type="PackedScene" uid="uid://dmgrm7c0p84sa" path="res://player_twin_stick/player_twin_stick.tscn" id="1_ajwoh"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_m8jmn"]
+custom_solver_bias = 0.015
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bcqtc"]
+size = Vector2(100, 100)
+
+[node name="Level" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.20686, 0)
+
+[node name="Floor2" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+shape = SubResource("WorldBoundaryShape3D_m8jmn")
+
+[node name="Floor" type="MeshInstance3D" parent="Floor2"]
+mesh = SubResource("PlaneMesh_bcqtc")
+skeleton = NodePath("../..")
+
+[node name="Player" parent="." instance=ExtResource("1_ajwoh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.82497, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.000994845, 1, 0, -1, -0.000994845, 0, 24.4754, 0)

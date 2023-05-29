@@ -20,3 +20,9 @@ func remove_bullet():
 	if bullet != null:
 		bullet.queue_free()
 		bullet = null
+
+
+func _on_body_entered(body):
+	print("Boom headshot!!!!")
+	# Broadcast signal
+	pass # Replace with function body.
