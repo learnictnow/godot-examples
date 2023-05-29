@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2xnolsrkun0b"]
+
+[ext_resource type="Texture2D" uid="uid://b5r8y5q4p8rqx" path="res://assets/1bit_platformer/Tiles/Transparent/tile_0009.png" id="1_rco5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qma1g"]
+size = Vector2(16, 16)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rco5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qma1g")

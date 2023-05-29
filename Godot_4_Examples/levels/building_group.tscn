@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://c7qsukqqu8hqy"]
 
 [ext_resource type="PackedScene" uid="uid://dymqdk015yesg" path="res://assets/models/kenney_commercial/skyscraperA.glb" id="1_0d3bi"]
 [ext_resource type="PackedScene" uid="uid://cnxm181sgeqdv" path="res://assets/models/kenney_commercial/skyscraperB.glb" id="2_accp3"]

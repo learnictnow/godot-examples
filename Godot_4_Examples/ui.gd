@@ -19,7 +19,7 @@ func _on_button_3_rd_person_pressed():
 
 func _on_button_fps_pressed():
 	print("FPS")
-	get_tree().change_scene_to_file("res://player_fps/Level_fps.tscn")
+	
 	pass # Replace with function body.
 
 
@@ -44,4 +44,9 @@ func _on_button_point_and_click_pressed():
 func _on_button_2d_platformer_pressed():
 	print("2D Platformer")
 	get_tree().change_scene_to_file("res://player_2d_platformer/leve_2d_platformer.tscn")
+	pass # Replace with function body.
+
+
+func _on_button_3d_direction_movement_pressed():
+	get_tree().change_scene_to_file("res://3D_Rotate_In_Direction/World.tscn")
 	pass # Replace with function body.
