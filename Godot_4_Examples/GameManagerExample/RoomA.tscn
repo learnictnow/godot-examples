@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://fsv2wbklcty3"]
+
+[ext_resource type="PackedScene" uid="uid://jw5lfnilcxlr" path="res://GameManagerExample/Transporter.tscn" id="1_2g6bo"]
+[ext_resource type="Script" path="res://GameManagerExample/Room.gd" id="1_8wy48"]
+[ext_resource type="PackedScene" uid="uid://dn3mh551qf711" path="res://3D_Rotate_In_Direction/player.tscn" id="3_1mo1w"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t282a"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbaox"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tqva7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6e4p"]
+
+[sub_resource type="TextMesh" id="TextMesh_lxhfi"]
+material = SubResource("StandardMaterial3D_r6e4p")
+text = "A"
+font_size = 127
+
+[node name="RoomA" type="Node3D"]
+script = ExtResource("1_8wy48")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_t282a")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbaox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_tqva7")
+
+[node name="Transporter" parent="." instance=ExtResource("1_2g6bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.77975, 0.89942, -4.62191)
+TargetScene = "B"
+
+[node name="Text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65507, -3.10253)
+mesh = SubResource("TextMesh_lxhfi")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.594823, -0.565429, 0.571381, 0, 0.7108, 0.703395, -0.803857, -0.418395, 0.4228, 10.9386, 12.7579, 10.8403)
+
+[node name="Player" parent="." instance=ExtResource("3_1mo1w")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.410544, 0.911841, 0, -0.911841, 0.410544, 0, 13.8581, 0)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jw5lfnilcxlr"]
+
+[ext_resource type="Script" path="res://GameManagerExample/Transporter.gd" id="1_w8h8h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6ihe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h0ond"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa00c"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.466667)
+
+[node name="Transporter" type="Node3D"]
+script = ExtResource("1_w8h8h")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_p6ihe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(0.853553, -0.146447, 0.5, 0.5, 0.5, -0.707107, -0.146447, 0.853553, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_h0ond")
+surface_material_override/0 = SubResource("StandardMaterial3D_sa00c")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
