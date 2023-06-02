@@ -29,6 +29,9 @@ shape = SubResource("CapsuleShape3D_wmscp")
 
 [node name="body" type="Node3D" parent="."]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621387, -1.13095)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
 mesh = SubResource("CapsuleMesh_jgga3")
 skeleton = NodePath("../..")

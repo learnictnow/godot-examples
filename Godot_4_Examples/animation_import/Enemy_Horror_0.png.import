@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d28qrtwmkiuqc"
-path.s3tc="res://.godot/imported/test_model_3.png-9ed5120beed9b7f75367ec03d23c93cf.s3tc.ctex"
+uid="uid://bv4ynpeq60lg4"
+path.s3tc="res://.godot/imported/Enemy_Horror_0.png-666f8b669ce77f0a1cd4a04f6da89992.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Impored_Models_Collision_Mesh/test_model_3.png"
-dest_files=["res://.godot/imported/test_model_3.png-9ed5120beed9b7f75367ec03d23c93cf.s3tc.ctex"]
+source_file="res://animation_import/Enemy_Horror_0.png"
+dest_files=["res://.godot/imported/Enemy_Horror_0.png-666f8b669ce77f0a1cd4a04f6da89992.s3tc.ctex"]
 
 [params]
 
