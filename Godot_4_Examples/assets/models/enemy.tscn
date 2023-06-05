@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjubu4wdr5efa"]
+
+[ext_resource type="Script" path="res://assets/models/enemy.gd" id="1_862n7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8245j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tcuks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gixlx"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+rim_enabled = true
+rim_tint = 0.52
+
+[sub_resource type="BoxMesh" id="BoxMesh_me64o"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7yrdj"]
+size = Vector3(1, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgb7r"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0okjl"]
+size = Vector3(1.25, 1.25, 4.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrj74"]
+transparency = 1
+albedo_color = Color(1, 0.584314, 0.52549, 0.333333)
+
+[sub_resource type="Animation" id="Animation_6n4c6"]
+resource_name = "enemy_detected"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.584314, 0.52549, 0.917647), Color(1, 0, 0, 0.780392), Color(1, 0.584314, 0.52549, 0.917647)]
+}
+
+[sub_resource type="Animation" id="Animation_hxbdm"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.584314, 0.52549, 0.333333), Color(1, 0.584314, 0.52549, 0.917647), Color(1, 0.584314, 0.52549, 0.333333)]
+}
+
+[sub_resource type="Animation" id="Animation_b8njr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.584314, 0.52549, 0.333333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq4qh"]
+_data = {
+"RESET": SubResource("Animation_b8njr"),
+"enemy_detected": SubResource("Animation_6n4c6"),
+"idle": SubResource("Animation_hxbdm")
+}
+
+[node name="Enemy" type="Node3D" groups=["Enemies"]]
+script = ExtResource("1_862n7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_8245j")
+
+[node name="BodyModel" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyModel"]
+mesh = SubResource("CapsuleMesh_tcuks")
+surface_material_override/0 = SubResource("StandardMaterial3D_gixlx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BodyModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15531, 0)
+mesh = SubResource("BoxMesh_me64o")
+surface_material_override/0 = SubResource("StandardMaterial3D_gixlx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BodyModel"]
+transform = Transform3D(1, 0, 0, 0, 0.000733093, 1, 0, -1, 0.000733093, 0, 0.730585, 0.165724)
+mesh = SubResource("PrismMesh_7yrdj")
+surface_material_override/0 = SubResource("StandardMaterial3D_gixlx")
+
+[node name="DetectionArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382917, 2.52558)
+shape = SubResource("BoxShape3D_lgb7r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DetectionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374997, 3.00374)
+mesh = SubResource("BoxMesh_0okjl")
+surface_material_override/0 = SubResource("StandardMaterial3D_yrj74")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DetectionArea3D/MeshInstance3D"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_oq4qh")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_rigid_body_3d_body_entered"]
+[connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
+[connection signal="body_exited" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_exited"]

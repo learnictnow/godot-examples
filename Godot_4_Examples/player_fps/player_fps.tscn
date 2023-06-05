@@ -11,7 +11,7 @@ albedo_color = Color(0.478431, 0.396078, 1, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_g3a5n"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_rknyu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -24,11 +24,11 @@ light_energy = 5.0
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.678, 0)
 
+[node name="BulletSpawn" type="Node3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115854, -1.0018)
+
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.072, 0)
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562146, -1.0018)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_luuss")

@@ -4,10 +4,15 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var sprinting = false;
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var bullet_scene = preload("res://bullet.tscn")
+var bullet_scene = preload("res://assets/models/bullet.tscn")
+
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):	
 
@@ -31,6 +36,8 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if Input.is_action_pressed("sprint"):
+			velocity.z *= 2
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -49,48 +56,28 @@ func _physics_process(delta):
 
 
 func _input(event):
+	
 	if event is InputEventMouseMotion:
 
 		var sensitivity = 1000
 
-#		rotation.y -= event.relative.x / sensitivity
-#
-#		var camera_rotation = $CamAnchor.rotation
-#		camera_rotation.x -= event.relative.y / sensitivity
-#		camera_rotation.y -= event.relative.x / sensitivity
-#		camera_rotation.x = clamp(camera_rotation.x, deg_to_rad(-45), deg_to_rad(90))
-#		$CamAnchor.rotation = camera_rotation
-
 		rotation.y -= event.relative.x / sensitivity
 		$CameraPivot.rotation.x -= event.relative.y / sensitivity
 		$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-90), deg_to_rad(90) )
-#		mouse_relative_x = clamp(event.relative.x, -50, 50)
-#		mouse_relative_y = clamp(event.relative.y, -50, 10)
 
-		#look_at($CamAnchor.global_position, Vector3.UP)
-		#var camera_rotation2 = $CamAnchor.global_transform.basis.get_euler()
-		#global_rotation = camera_rotation2
 
 		
 
 
 	if Input.is_action_just_pressed("Fire"):
-		print("fire")
-		#spawn_bullet()
-		#var bullet = bullet_scene.instantiate()
-
-
-
+		spawn_bullet()
 
 func spawn_bullet():
-	var bullet = bullet_scene.instantiate()
-	#add_child(bullet)
+	var bullet_speed = 25
+	
+	var projectile = bullet_scene.instantiate() as RigidBody3D
 
-	add_sibling(bullet)
+	add_sibling(projectile)
 
-	bullet.global_transform.origin = get_node("BulletSpawn").global_transform.origin
-
-
-	#bullet.apply_central_impulse(Vector3(0, 0, bullet_speed))
-	var bullet_speed = 5
-	bullet.linear_velocity = Vector3(0, 0, bullet_speed)
+	projectile.transform = $CameraPivot/BulletSpawn.global_transform
+	projectile.linear_velocity = $CameraPivot/BulletSpawn.global_transform.basis.z * -1 * bullet_speed
