@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjubu4wdr5efa"]
+[gd_scene load_steps=15 format=3 uid="uid://cjubu4wdr5efa"]
 
 [ext_resource type="Script" path="res://assets/models/enemy.gd" id="1_862n7"]
 
@@ -26,6 +26,21 @@ size = Vector3(1.25, 1.25, 4.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrj74"]
 transparency = 1
 albedo_color = Color(1, 0.584314, 0.52549, 0.333333)
+
+[sub_resource type="Animation" id="Animation_b8njr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.584314, 0.52549, 0.333333)]
+}
 
 [sub_resource type="Animation" id="Animation_6n4c6"]
 resource_name = "enemy_detected"
@@ -60,21 +75,6 @@ tracks/0/keys = {
 "values": [Color(1, 0.584314, 0.52549, 0.333333), Color(1, 0.584314, 0.52549, 0.917647), Color(1, 0.584314, 0.52549, 0.333333)]
 }
 
-[sub_resource type="Animation" id="Animation_b8njr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.584314, 0.52549, 0.333333)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oq4qh"]
 _data = {
 "RESET": SubResource("Animation_b8njr"),
@@ -82,7 +82,13 @@ _data = {
 "idle": SubResource("Animation_hxbdm")
 }
 
-[node name="Enemy" type="Node3D" groups=["Enemies"]]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uwhv"]
+
+[node name="Enemy" type="RigidBody3D" groups=["Enemies"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+freeze_mode = 1
 script = ExtResource("1_862n7")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -122,6 +128,9 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_oq4qh")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8uwhv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_rigid_body_3d_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]

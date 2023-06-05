@@ -6,6 +6,8 @@ const JUMP_VELOCITY = 4.5
 
 var sprinting = false;
 
+var platform = null
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -15,7 +17,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):	
-
+	print(position)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -43,7 +45,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	move_and_slide()
 
-
+	var platformVelocity = platform.velocity
+	var displacement = platformVelocity * delta
+	translation += displacement
 
 
 
