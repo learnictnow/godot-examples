@@ -12,6 +12,7 @@ albedo_color = Color(0.478431, 0.396078, 1, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_g3a5n"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_rknyu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

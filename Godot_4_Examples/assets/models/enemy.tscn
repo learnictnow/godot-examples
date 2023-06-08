@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjubu4wdr5efa"]
+[gd_scene load_steps=15 format=3 uid="uid://cjubu4wdr5efa"]
 
 [ext_resource type="Script" path="res://assets/models/enemy.gd" id="1_862n7"]
 
@@ -82,7 +82,13 @@ _data = {
 "idle": SubResource("Animation_hxbdm")
 }
 
-[node name="Enemy" type="Node3D" groups=["Enemies"]]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uwhv"]
+
+[node name="Enemy" type="RigidBody3D" groups=["Enemies"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+freeze_mode = 1
 script = ExtResource("1_862n7")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -122,6 +128,9 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_oq4qh")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8uwhv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_rigid_body_3d_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
