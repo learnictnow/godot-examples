@@ -89,7 +89,7 @@ mesh = SubResource("PrismMesh_u1l1j")
 surface_material_override/0 = SubResource("StandardMaterial3D_qvvg1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312039, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0505308, 0)
 shape = SubResource("BoxShape3D_kkiny")
 
 [node name="LF" type="VehicleWheel3D" parent="."]
