@@ -71,7 +71,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_diih4")
 curve = SubResource("Curve3D_hxt68")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Node3D/Path3D"]
-transform = Transform3D(0.647374, -0.648637, -0.400219, -0.707796, -0.706416, 6.2339e-09, -0.282722, 0.283273, -0.916418, -55.8291, 0, -23.4642)
+transform = Transform3D(0.647566, -0.648445, -0.400219, -0.707587, -0.706626, -6.12934e-09, -0.282806, 0.283189, -0.916418, -55.8293, 0, -23.4647)
 progress = 597.337
 
 [node name="MoveMe" type="Node3D" parent="Node3D/Path3D/PathFollow3D"]
