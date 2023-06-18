@@ -14,10 +14,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var bullet_scene = preload("res://assets/models/bullet.tscn")
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _physics_process(delta):	
-	print(position)
+	
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -43,20 +44,14 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	
+	
 	move_and_slide()
 
-	var platformVelocity = platform.velocity
-	var displacement = platformVelocity * delta
-	translation += displacement
 
 
 
-#	var col = move_and_collide(velocity * delta)
-#	if col:
-#		print("I collided with ", col.get_collider().name)
-#		if col.get_collider() is RigidBody3D:
-#			col.get_collider().apply_central_impulse(-col.get_normal() * 5)
-#			col.get_collider().apply_impulse(-col.get_normal() * 5, col.get_position())
 
 
 func _input(event):

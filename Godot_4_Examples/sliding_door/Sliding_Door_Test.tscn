@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://dkoc38mr4sncb"]
+
+[ext_resource type="Script" path="res://sliding_door/Sliding_Door_Test.gd" id="1_waq8f"]
+[ext_resource type="PackedScene" uid="uid://caqsvbwepo80r" path="res://Level.tscn" id="1_wcos4"]
+[ext_resource type="PackedScene" uid="uid://baw12slxvef4o" path="res://player_3rd/player.tscn" id="2_1vq1f"]
+[ext_resource type="Script" path="res://sliding_door/DoorTrigger.gd" id="4_1gutp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p688y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvyiu"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igsvu"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bbwo7"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kseua"]
+albedo_color = Color(0.431373, 0.862745, 0.0352941, 1)
+
+[sub_resource type="Animation" id="Animation_733st"]
+resource_name = "door_idle"
+
+[sub_resource type="Animation" id="Animation_fptpv"]
+resource_name = "door_open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iu7mr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qowew"]
+resource_name = "door_close"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lpyd1"]
+_data = {
+"RESET": SubResource("Animation_iu7mr"),
+"door_close": SubResource("Animation_qowew"),
+"door_idle": SubResource("Animation_733st"),
+"door_open": SubResource("Animation_fptpv")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kny8j"]
+size = Vector3(1, 2, 1)
+
+[node name="Sliding_Door_Test" type="Node3D"]
+script = ExtResource("1_waq8f")
+
+[node name="Level" parent="." instance=ExtResource("1_wcos4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0187961, 0.999823, 0, -0.999823, 0.0187961, 0, 11.7782, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97926, 0)
+mesh = SubResource("BoxMesh_p688y")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_1vq1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.93153, 4.83739)
+
+[node name="DoorTrigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("4_1gutp")
+
+[node name="TriggerAreaA" type="Area3D" parent="DoorTrigger"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger/TriggerAreaA"]
+shape = SubResource("BoxShape3D_yvyiu")
+
+[node name="Door" type="StaticBody3D" parent="DoorTrigger"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger/Door"]
+shape = SubResource("BoxShape3D_igsvu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorTrigger/Door"]
+mesh = SubResource("BoxMesh_bbwo7")
+surface_material_override/0 = SubResource("StandardMaterial3D_kseua")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorTrigger/Door"]
+autoplay = "door_idle"
+libraries = {
+"": SubResource("AnimationLibrary_lpyd1")
+}
+
+[node name="TriggerAreaB" type="Area3D" parent="DoorTrigger"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger/TriggerAreaB"]
+shape = SubResource("BoxShape3D_kny8j")
+
+[connection signal="body_entered" from="DoorTrigger/TriggerAreaA" to="DoorTrigger" method="_on_trigger_area_a_body_entered"]
+[connection signal="body_entered" from="DoorTrigger/TriggerAreaB" to="DoorTrigger" method="_on_trigger_area_b_body_entered"]
