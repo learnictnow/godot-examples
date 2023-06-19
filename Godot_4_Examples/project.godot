@@ -18,6 +18,10 @@ boot_splash/image="res://assets/images/kiwi.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://GameManager.tscn"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/copilot/plugin.cfg")

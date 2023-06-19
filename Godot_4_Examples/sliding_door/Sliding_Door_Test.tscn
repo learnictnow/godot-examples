@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkoc38mr4sncb"]
+[gd_scene load_steps=27 format=3 uid="uid://dkoc38mr4sncb"]
 
 [ext_resource type="Script" path="res://sliding_door/Sliding_Door_Test.gd" id="1_waq8f"]
 [ext_resource type="PackedScene" uid="uid://caqsvbwepo80r" path="res://Level.tscn" id="1_wcos4"]
 [ext_resource type="PackedScene" uid="uid://baw12slxvef4o" path="res://player_3rd/player.tscn" id="2_1vq1f"]
 [ext_resource type="Script" path="res://sliding_door/DoorTrigger.gd" id="4_1gutp"]
+[ext_resource type="Script" path="res://sliding_door/DoorContainer.gd" id="5_ubsf3"]
+[ext_resource type="PackedScene" uid="uid://cug0yatokcj4n" path="res://door_sliding.tscn" id="6_nox12"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p688y"]
 
@@ -18,25 +20,6 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kseua"]
 albedo_color = Color(0.431373, 0.862745, 0.0352941, 1)
-
-[sub_resource type="Animation" id="Animation_733st"]
-resource_name = "door_idle"
-
-[sub_resource type="Animation" id="Animation_fptpv"]
-resource_name = "door_open"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_iu7mr"]
 length = 0.001
@@ -69,6 +52,25 @@ tracks/0/keys = {
 "values": [Vector3(2, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_733st"]
+resource_name = "door_idle"
+
+[sub_resource type="Animation" id="Animation_fptpv"]
+resource_name = "door_open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lpyd1"]
 _data = {
 "RESET": SubResource("Animation_iu7mr"),
@@ -79,6 +81,62 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kny8j"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7pqc"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n67yd"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e45e2"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="Animation" id="Animation_jyxj2"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_0gx3x"]
+resource_name = "open_close"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1), Vector3(3, 0, 1), Vector3(2.2, 0, 1), Vector3(0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_arnni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_scymt"]
+_data = {
+"RESET": SubResource("Animation_arnni"),
+"idle": SubResource("Animation_jyxj2"),
+"open_close": SubResource("Animation_0gx3x")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ag5h"]
+size = Vector3(10, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjwj8"]
+size = Vector3(10, 3, 2)
 
 [node name="Sliding_Door_Test" type="Node3D"]
 script = ExtResource("1_waq8f")
@@ -127,5 +185,50 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -2)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger/TriggerAreaB"]
 shape = SubResource("BoxShape3D_kny8j")
 
+[node name="DoorContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 2.09845)
+script = ExtResource("5_ubsf3")
+
+[node name="FrontArea3D" type="Area3D" parent="DoorContainer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorContainer/FrontArea3D"]
+shape = SubResource("BoxShape3D_e7pqc")
+
+[node name="BackArea3D" type="Area3D" parent="DoorContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorContainer/BackArea3D"]
+shape = SubResource("BoxShape3D_e7pqc")
+
+[node name="Door" type="StaticBody3D" parent="DoorContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorContainer/Door"]
+shape = SubResource("BoxShape3D_n67yd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorContainer/Door"]
+mesh = SubResource("BoxMesh_e45e2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorContainer/Door"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_scymt")
+}
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 3)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("BoxMesh_8ag5h")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_wjwj8")
+
+[node name="DoorSliding" parent="." instance=ExtResource("6_nox12")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.44388, 2.20898, 3.15887)
+
 [connection signal="body_entered" from="DoorTrigger/TriggerAreaA" to="DoorTrigger" method="_on_trigger_area_a_body_entered"]
 [connection signal="body_entered" from="DoorTrigger/TriggerAreaB" to="DoorTrigger" method="_on_trigger_area_b_body_entered"]
+[connection signal="body_entered" from="DoorContainer/FrontArea3D" to="DoorContainer" method="_on_front_area_3d_body_entered"]
+[connection signal="body_entered" from="DoorContainer/BackArea3D" to="DoorContainer" method="_on_back_area_3d_body_entered"]

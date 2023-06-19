@@ -1,6 +1,8 @@
-extends Node3D
+extends Node
 
-
+var lives = 3
+var score = 0
+var has_blue_key = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +11,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(GameManager.lives)
-	$Camera3D.look_at($Player.position, Vector3.UP)
 	pass

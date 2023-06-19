@@ -7,8 +7,13 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func death():
+	GameManager.lives = GameManager.lives - 1
+
 
 func _physics_process(delta):
+	GameManager.lives = GameManager.lives - 1
+	print(GameManager.lives)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
