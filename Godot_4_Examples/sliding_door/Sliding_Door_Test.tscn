@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dkoc38mr4sncb"]
+[gd_scene load_steps=30 format=3 uid="uid://dkoc38mr4sncb"]
 
 [ext_resource type="Script" path="res://sliding_door/Sliding_Door_Test.gd" id="1_waq8f"]
 [ext_resource type="PackedScene" uid="uid://caqsvbwepo80r" path="res://Level.tscn" id="1_wcos4"]
@@ -91,6 +91,21 @@ size = Vector3(3, 3, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_e45e2"]
 size = Vector3(3, 3, 1)
 
+[sub_resource type="Animation" id="Animation_arnni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jyxj2"]
 resource_name = "idle"
 
@@ -110,21 +125,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 1), Vector3(3, 0, 1), Vector3(2.2, 0, 1), Vector3(0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_arnni"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_scymt"]
 _data = {
 "RESET": SubResource("Animation_arnni"),
@@ -137,6 +137,68 @@ size = Vector3(10, 3, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjwj8"]
 size = Vector3(10, 3, 2)
+
+[sub_resource type="Animation" id="Animation_7k8b4"]
+resource_name = "move_wall"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(9, 1, -6), Vector3(5, 1, -6), Vector3(6, 1, -6), Vector3(9, 1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c54m0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9, 1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy65m"]
+_data = {
+"RESET": SubResource("Animation_c54m0"),
+"move_wall": SubResource("Animation_7k8b4")
+}
 
 [node name="Sliding_Door_Test" type="Node3D"]
 script = ExtResource("1_waq8f")
@@ -224,6 +286,21 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall"]
 shape = SubResource("BoxShape3D_wjwj8")
+
+[node name="MovingWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -6)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MovingWall"]
+mesh = SubResource("BoxMesh_8ag5h")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MovingWall"]
+shape = SubResource("BoxShape3D_wjwj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingWall"]
+libraries = {
+"": SubResource("AnimationLibrary_iy65m")
+}
 
 [node name="DoorSliding" parent="." instance=ExtResource("6_nox12")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.44388, 2.20898, 3.15887)
