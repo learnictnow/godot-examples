@@ -10,6 +10,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func death():
 	GameManager.lives = GameManager.lives - 1
 
+func _process(delta):
+	$Control/SubViewportContainer/SubViewport/Camera3D.position = $MiniMapCameraPos.position
 
 func _physics_process(delta):
 	GameManager.lives = GameManager.lives - 1
