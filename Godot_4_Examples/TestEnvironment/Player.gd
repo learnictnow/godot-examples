@@ -11,7 +11,9 @@ func death():
 	GameManager.lives = GameManager.lives - 1
 
 func _process(delta):
-	$Control/SubViewportContainer/SubViewport/Camera3D.position = $MiniMapCameraPos.position
+	$Control/SubViewportContainer/SubViewport/Camera3D.global_transform.origin = $MiniMapCameraPos.global_transform.origin
+	$Control/SubViewportContainer/SubViewport/Camera3D.global_transform.basis.x = $MiniMapCameraPos.global_transform.basis.x
+	pass
 
 func _physics_process(delta):
 	GameManager.lives = GameManager.lives - 1

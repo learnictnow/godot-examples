@@ -85,12 +85,15 @@ offset_bottom = 40.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 261.0
+offset_bottom = 262.0
 
 [node name="SubViewport" type="SubViewport" parent="Player/Control/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
 debug_draw = 1
 size = Vector2i(256, 256)
 render_target_update_mode = 4
