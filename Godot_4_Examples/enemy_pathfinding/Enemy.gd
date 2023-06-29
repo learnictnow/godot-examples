@@ -20,17 +20,13 @@ func _ready():
 
 
 func _physics_process(delta):
-	#set_movement_target(movement_target_position)
-	#navigation_agent.set_target_position(movement_target_position)
+	
 	if navigation_agent.is_navigation_finished():
 		waypointIndex += 1
 		if waypointIndex > waypoints.size() -1:
 			waypointIndex = 0
 		navigation_agent.set_target_position(waypoints[waypointIndex].global_position)
-#	print(position)
-#	print(movement_target_position)
-#	if (position.x >= movement_target_position.x - 1 and position.x <= movement_target_position.x + 1) and (position.y >= movement_target_position.x - 1 and position.y <= movement_target_position.x + 1) and (position.z >= movement_target_position.x - 1 and position.z <= movement_target_position.x + 1):
-#		print("At position")
+#	
 
 	var current_agent_position: Vector3 = global_transform.origin
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
@@ -41,3 +37,20 @@ func _physics_process(delta):
 
 	set_velocity(new_velocity)
 	move_and_slide()
+
+
+func _on_vision_area_3d_body_entered(body):
+	if body.is_in_group("Player"):
+		print("Chase!!!")
+		navigation_agent.set_target_position(body.position)
+	pass # Replace with function body.
+
+
+func _on_vision_area_3d_body_exited(body):
+	if body.is_in_group("Player"):
+		print("Stop Chase!!!")
+		waypointIndex += 1
+		if waypointIndex > waypoints.size() -1:
+			waypointIndex = 0
+		navigation_agent.set_target_position(waypoints[waypointIndex].global_position)
+	pass # Replace with function body.

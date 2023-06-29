@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm3fxq8nqlf4a"]
+[gd_scene load_steps=12 format=3 uid="uid://bm3fxq8nqlf4a"]
 
 [ext_resource type="Script" path="res://enemy_pathfinding/Player.gd" id="2_8jshk"]
 [ext_resource type="Script" path="res://enemy_pathfinding/Enemy.gd" id="3_ji48f"]
@@ -25,6 +25,9 @@ size = Vector3(1, 2, 1)
 albedo_color = Color(0.670588, 0, 0, 1)
 metallic = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bna5a"]
+size = Vector3(0.99438, 1, 3.04701)
+
 [node name="EnemyPathfinding" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -40,7 +43,7 @@ shape = SubResource("WorldBoundaryShape3D_0ejcj")
 mesh = SubResource("PlaneMesh_y6ybc")
 skeleton = NodePath("../..")
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32891, 2.90978, 2.86723)
 script = ExtResource("2_8jshk")
 
@@ -70,6 +73,12 @@ shape = SubResource("CapsuleShape3D_o4r6b")
 mesh = SubResource("BoxMesh_rl0te")
 surface_material_override/0 = SubResource("StandardMaterial3D_etix6")
 
+[node name="VisionArea3D" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/VisionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.45791)
+shape = SubResource("BoxShape3D_bna5a")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.95613, 16.2688)
 current = true
@@ -90,3 +99,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81978, 2.98254, 4.36766)
 
 [node name="Marker3DBR" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2966, 2.98254, 3.66262)
+
+[connection signal="body_entered" from="Enemy/VisionArea3D" to="Enemy" method="_on_vision_area_3d_body_entered"]
+[connection signal="body_exited" from="Enemy/VisionArea3D" to="Enemy" method="_on_vision_area_3d_body_exited"]
