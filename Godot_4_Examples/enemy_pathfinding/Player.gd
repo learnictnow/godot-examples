@@ -7,6 +7,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var climbing = false
+
 func _input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -34,8 +36,12 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if climbing:
+		direction = (transform.basis * Vector3(input_dir.x, -input_dir.y, 0)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
+		if climbing:
+			velocity.y = direction.y * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -45,3 +51,23 @@ func _physics_process(delta):
 
 
 
+
+
+func _on_area_3d_area_entered(area):
+	
+	pass # Replace with function body.
+
+
+func _on_area_3d_body_entered(body):
+	#print("Something here")
+	if body.is_in_group("Player"):
+		print("Wall entered")
+		climbing = true
+	pass # Replace with function body.
+
+
+func _on_area_3d_body_exited(body):
+	if body.is_in_group("Player"):
+		print("Wall left")
+		climbing = false
+	pass # Replace with function body.
