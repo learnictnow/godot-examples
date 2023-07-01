@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bih2my3o0eqqx"]
+
+[ext_resource type="PackedScene" uid="uid://jw2d2wwq67bx" path="res://assets/models/kiwi/Kiwi.gltf" id="1_4xokt"]
+[ext_resource type="Script" path="res://levels/Player.gd" id="1_bern1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e6h2m"]
+size = Vector2(25, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhmcq"]
+albedo_color = Color(0.317647, 0.286275, 0.25098, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tyywk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sf6wn"]
+
+[node name="TestEnvironment" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Level"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Floor"]
+mesh = SubResource("PlaneMesh_e6h2m")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhmcq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor"]
+shape = SubResource("WorldBoundaryShape3D_tyywk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 0.677582, 0.735447, 0, -0.735447, 0.677582, 0, 6.74805, 6.23137)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_bern1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sf6wn")
+
+[node name="Kiwi" parent="Player" instance=ExtResource("1_4xokt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37714, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.930181, 0.367102, 0, -0.367102, 0.930181, -0.452274, 2.7634, 4.35963)
