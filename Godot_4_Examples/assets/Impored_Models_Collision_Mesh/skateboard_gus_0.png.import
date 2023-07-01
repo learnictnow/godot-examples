@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0t0i881ejn5q"
-path.s3tc="res://.godot/imported/skateboard_gus_0.png-9992b0a408f3fa8605cc416a1c06a29a.s3tc.ctex"
+path.s3tc="res://.godot/imported/skateboard_gus_0.png-2d120925f36182f55f2afb83a633216e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Impored_Models_Collision_Mesh/skateboard_gus_0.png"
-dest_files=["res://.godot/imported/skateboard_gus_0.png-9992b0a408f3fa8605cc416a1c06a29a.s3tc.ctex"]
+source_file="res://assets/Impored_Models_Collision_Mesh/skateboard_gus_0.png"
+dest_files=["res://.godot/imported/skateboard_gus_0.png-2d120925f36182f55f2afb83a633216e.s3tc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2t7gybdysw27"
-path="res://.godot/imported/texture_BOARD.png-aa2923f3b82f4fede63695481819a4ea.ctex"
+uid="uid://dbdhndh5i51h4"
+path="res://.godot/imported/texture3.png-b095796f4a04625bf59bbb83d6f03990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Impored_Models_Collision_Mesh/texture_BOARD.png"
-dest_files=["res://.godot/imported/texture_BOARD.png-aa2923f3b82f4fede63695481819a4ea.ctex"]
+source_file="res://assets/Impored_Models_Collision_Mesh/texture3.png"
+dest_files=["res://.godot/imported/texture3.png-b095796f4a04625bf59bbb83d6f03990.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhtuyh0knv5ev"
-path="res://.godot/imported/test_model.gltf-742925611f056f7a893e6e4ad8de8c1b.scn"
+uid="uid://b2f0miuosg2co"
+path="res://.godot/imported/football_field.gltf-e29f9b48c7d9e6179464d81699430ca7.scn"
 
 [deps]
 
-source_file="res://Impored_Models_Collision_Mesh/test_model.gltf"
-dest_files=["res://.godot/imported/test_model.gltf-742925611f056f7a893e6e4ad8de8c1b.scn"]
+source_file="res://assets/Impored_Models_Collision_Mesh/football_field.gltf"
+dest_files=["res://.godot/imported/football_field.gltf-e29f9b48c7d9e6179464d81699430ca7.scn"]
 
 [params]
 
