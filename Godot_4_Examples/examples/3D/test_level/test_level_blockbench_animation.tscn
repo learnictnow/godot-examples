@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" uid="uid://rr03dqsx6tih" path="res://examples/3D/test_level/box_room_platform.gltf" id="1_7ja8o"]
+[ext_resource type="PackedScene" path="res://examples/3D/player_fps/player_fps.tscn" id="2_rb2j3"]
+[ext_resource type="PackedScene" uid="uid://cjubu4wdr5efa" path="res://assets/models/enemy.tscn" id="4_0syjv"]
+[ext_resource type="PackedScene" uid="uid://c20lmxuogkmmj" path="res://assets/models/platform.tscn" id="5_7bff7"]
+[ext_resource type="Animation" uid="uid://ncfl71dhbxwc" path="res://examples/3D/test_level/animationmodellevel_animations.res" id="5_7grwn"]
+[ext_resource type="PackedScene" uid="uid://c7eio0sxhqtuy" path="res://assets/models/box.tscn" id="6_uma73"]
+
+[sub_resource type="Environment" id="Environment_o7t13"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dk2x5"]
+_data = {
+"animationmodellevel_animations": ExtResource("5_7grwn")
+}
+
+[sub_resource type="Animation" id="Animation_3nkqj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-30.1684, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.499655, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-19.1418, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vtgn7"]
+resource_name = "move_platform"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-30.1684, -0.25, 0, 0.25, 0, -31.4949, -0.25, 0, 0.25, 0, -34.0883, -0.25, 0, 0.25, 0, -33.7574, -0.25, 0, 0.25, 0, -30.1684, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-19.1418, -0.25, 0, 0.25, 0, -17.7477, -0.25, 0, 0.25, 0, 19.3875, -0.25, 0, 0.25, 0, 18.2198, -0.25, 0, 0.25, 0, -19.1418, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ej61"]
+_data = {
+"RESET": SubResource("Animation_3nkqj"),
+"move_platform": SubResource("Animation_vtgn7")
+}
+
+[node name="test_level_blockbench_animation" type="WorldEnvironment"]
+environment = SubResource("Environment_o7t13")
+
+[node name="box_room_platform" parent="." instance=ExtResource("1_7ja8o")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="box_room_platform"]
+autoplay = "test_library/animationmodellevel_animations"
+playback_process_mode = 0
+speed_scale = 0.5
+libraries = {
+"test_library": SubResource("AnimationLibrary_dk2x5")
+}
+
+[node name="Player" parent="." instance=ExtResource("2_rb2j3")]
+transform = Transform3D(-0.979241, 0, 0.202702, 0, 1, 0, -0.202702, 0, -0.979241, -28.4557, 3.17297, -19.8179)
+motion_mode = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0855213, 0.996336, 0, -0.996336, 0.0855213, 0, 26.2054, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_0syjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2292, 1.54392, 7.33715)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_0syjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8628, 3.60103, -23.3594)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_0syjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0108, -12.5621, -11.255)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_0syjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.827079, 1.97527, -14.738)
+
+[node name="Platform" parent="." instance=ExtResource("5_7bff7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.1684, 0.499655, -19.1418)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+autoplay = "move_platform"
+playback_process_mode = 0
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_5ej61")
+}
+
+[node name="box" parent="." instance=ExtResource("6_uma73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 2.38839, -19.3385)
+
+[node name="box2" parent="." instance=ExtResource("6_uma73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 3.96098, -19.3385)
+
+[node name="box3" parent="." instance=ExtResource("6_uma73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 3.96098, -17.9959)

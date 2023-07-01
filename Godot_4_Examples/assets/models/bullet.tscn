@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5378n11mxlxd"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://player_twin_stick/bullet.gd" id="1_du34l"]
+[ext_resource type="Script" path="res://examples/3D/player_twin_stick/bullet.gd" id="1_du34l"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7uo0c"]
 

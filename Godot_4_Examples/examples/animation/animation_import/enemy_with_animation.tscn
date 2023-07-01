@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://ds2nwd0et5ydl" path="res://examples/animation/animation_import/Enemy_Horror.gltf" id="1_jbhgh"]
+[ext_resource type="Animation" uid="uid://b8xjclderkn8v" path="res://examples/animation/animation_import/animationmodelspin.res" id="2_70ei5"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lk8t4"]
+_data = {
+"animationmodelspin": ExtResource("2_70ei5")
+}
+
+[node name="Enemy" type="Node3D"]
+transform = Transform3D(-0.635189, 0, 0.772357, 0, 1, 0, -0.772357, 0, -0.635189, 0, 1.42803, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31727, 0)
+light_energy = 7.095
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.438377, 0)
+light_energy = 7.095
+
+[node name="Enemy_Horror" parent="." instance=ExtResource("1_jbhgh")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemy_Horror"]
+autoplay = "animationmodelspin"
+libraries = {
+"": SubResource("AnimationLibrary_lk8t4")
+}

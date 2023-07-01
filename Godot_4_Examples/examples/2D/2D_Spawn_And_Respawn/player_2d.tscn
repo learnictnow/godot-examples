@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://examples/2D/2D_Spawn_And_Respawn/Player2D.gd" id="1_4at56"]
+[ext_resource type="Texture2D" uid="uid://bqluxic1u72yn" path="res://assets/1bit_platformer/Tiles/Transparent/tile_0240.png" id="2_j4gyv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4ogi"]
+
+[node name="Player2D" type="CharacterBody2D"]
+position = Vector2(64, 0)
+script = ExtResource("1_4at56")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_j4gyv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c4ogi")

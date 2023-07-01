@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" uid="uid://caqsvbwepo80r" path="res://levels/Level.tscn" id="1_agibk"]
+[ext_resource type="PackedScene" path="res://examples/3D/3D_Rotate_In_Direction/player.tscn" id="2_6yfvl"]
+[ext_resource type="Script" path="res://examples/3D/3D_Rotate_In_Direction/Camera3DFollow.gd" id="3_s0ek7"]
+
+[sub_resource type="Environment" id="Environment_885d0"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_wnkt7"]
+
+[node name="World" type="WorldEnvironment"]
+environment = SubResource("Environment_885d0")
+camera_attributes = SubResource("CameraAttributesPhysical_wnkt7")
+
+[node name="Level2" parent="." instance=ExtResource("1_agibk")]
+
+[node name="Player" parent="." instance=ExtResource("2_6yfvl")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766952, 0.641704, 0, -0.641704, 0.766952, 0, 13.9033, 12.8248)
+script = ExtResource("3_s0ek7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]

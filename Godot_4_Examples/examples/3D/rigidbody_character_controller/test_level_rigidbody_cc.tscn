@@ -1,0 +1,206 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" uid="uid://rr03dqsx6tih" path="res://examples/3D/test_level/box_room_platform.gltf" id="1_nev5o"]
+[ext_resource type="Animation" uid="uid://ncfl71dhbxwc" path="res://examples/3D/test_level/animationmodellevel_animations.res" id="2_foroq"]
+[ext_resource type="PackedScene" uid="uid://cjubu4wdr5efa" path="res://assets/models/enemy.tscn" id="4_6gowo"]
+[ext_resource type="PackedScene" uid="uid://c20lmxuogkmmj" path="res://assets/models/platform.tscn" id="5_2blds"]
+[ext_resource type="PackedScene" uid="uid://c7eio0sxhqtuy" path="res://assets/models/box.tscn" id="6_2crg1"]
+
+[sub_resource type="Environment" id="Environment_o7t13"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dk2x5"]
+_data = {
+"animationmodellevel_animations": ExtResource("2_foroq")
+}
+
+[sub_resource type="Animation" id="Animation_3nkqj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-30.1684, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.499655, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-19.1418, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vtgn7"]
+resource_name = "move_platform"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-30.1684, -0.25, 0, 0.25, 0, -31.4949, -0.25, 0, 0.25, 0, -34.0883, -0.25, 0, 0.25, 0, -33.7574, -0.25, 0, 0.25, 0, -30.1684, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0, 0.499655, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-17.8774, -0.25, 0, 0.25, 0, -17.7477, -0.25, 0, 0.25, 0, 19.3875, -0.25, 0, 0.25, 0, 18.2198, -0.25, 0, 0.25, 0, -19.1418, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 4.1, 4.5, 8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ej61"]
+_data = {
+"RESET": SubResource("Animation_3nkqj"),
+"move_platform": SubResource("Animation_vtgn7")
+}
+
+[sub_resource type="GDScript" id="GDScript_ssyed"]
+script/source = "extends RigidBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+var movementForce := Vector3(1000, 0, 1000)
+
+func _physics_process(delta):
+	var inputDirection = Vector3()
+	if Input.is_action_pressed(\"ui_right\"):
+		inputDirection.x += 1
+	if Input.is_action_pressed(\"ui_left\"):
+		inputDirection.x -= 1
+	if Input.is_action_pressed(\"ui_up\"):
+		inputDirection.z -= 1
+	if Input.is_action_pressed(\"ui_down\"):
+		inputDirection.z += 1
+
+	var force = inputDirection * movementForce
+	apply_central_force(force)
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qgth0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_my8wn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6dxk7"]
+
+[node name="test_level_blockbench_animation" type="WorldEnvironment"]
+environment = SubResource("Environment_o7t13")
+
+[node name="box_room_platform" parent="." instance=ExtResource("1_nev5o")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="box_room_platform"]
+autoplay = "test_library/animationmodellevel_animations"
+playback_process_mode = 0
+speed_scale = 0.5
+libraries = {
+"test_library": SubResource("AnimationLibrary_dk2x5")
+}
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0855213, 0.996336, 0, -0.996336, 0.0855213, 0, 26.2054, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_6gowo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2292, 1.54392, 7.33715)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_6gowo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8628, 3.60103, -23.3594)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_6gowo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0108, -12.5621, -11.255)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_6gowo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.827079, 1.97527, -14.738)
+
+[node name="Platform" parent="." instance=ExtResource("5_2blds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1684, 0.499655, -19.1418)
+mass = 100.0
+gravity_scale = 0.0
+max_contacts_reported = 0
+freeze_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+autoplay = "move_platform"
+playback_process_mode = 0
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_5ej61")
+}
+
+[node name="box" parent="." instance=ExtResource("6_2crg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 2.38839, -19.3385)
+
+[node name="box2" parent="." instance=ExtResource("6_2crg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 3.96098, -19.3385)
+
+[node name="box3" parent="." instance=ExtResource("6_2crg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8722, 3.96098, -17.9959)
+
+[node name="PlayerRigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2341, 6.92082, -19.9034)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 80.0
+script = SubResource("GDScript_ssyed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRigidBody3D"]
+shape = SubResource("CapsuleShape3D_qgth0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerRigidBody3D"]
+mesh = SubResource("CapsuleMesh_my8wn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerRigidBody3D/MeshInstance3D"]
+transform = Transform3D(0.414786, 0, 0, 0, 0.626151, 0, 0, 0, 0.583883, 0, 0.520452, -0.361214)
+mesh = SubResource("BoxMesh_6dxk7")
+
+[node name="CameraPivot" type="Node3D" parent="PlayerRigidBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerRigidBody3D/CameraPivot"]
+transform = Transform3D(0.999994, 0.00349065, -1.16415e-10, -0.00294399, 0.843386, 0.5373, 0.00187553, -0.537296, 0.843391, 0, 8.81409, 6.33285)

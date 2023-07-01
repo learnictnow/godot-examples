@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://c084hal2i7fra"]
+
+[ext_resource type="Material" uid="uid://ducwybtq7b6be" path="res://assets/materials/pink_glow.tres" id="1_hp8gh"]
+[ext_resource type="PackedScene" path="res://examples/3D/player_space/player_space.tscn" id="1_mxosb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_k6rs8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c7kiy"]
+
+[sub_resource type="Environment" id="Environment_a6igl"]
+background_mode = 1
+background_color = Color(0, 0, 0.207843, 1)
+ambient_light_energy = 8.78
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_00r5p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qfkme"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tbl6t"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Level_space" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.20205)
+material_override = ExtResource("1_hp8gh")
+mesh = SubResource("SphereMesh_k6rs8")
+material = ExtResource("1_hp8gh")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67118, 0, -8.11523)
+material_override = ExtResource("1_hp8gh")
+mesh = SubResource("SphereMesh_c7kiy")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55331, 1.76018, 0)
+material_override = ExtResource("1_hp8gh")
+mesh = SubResource("SphereMesh_c7kiy")
+material = ExtResource("1_hp8gh")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82733, 0, 2.72796)
+material_override = ExtResource("1_hp8gh")
+mesh = SubResource("SphereMesh_c7kiy")
+
+[node name="player_space" parent="." instance=ExtResource("1_mxosb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a6igl")
+camera_attributes = SubResource("CameraAttributesPractical_00r5p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.2987, -2.17798, 3.06186, 3.75, 2.16506, -2.5, -0.236836, 3.94575, 3.06186, 0, 0, -14.2382)
+mesh = SubResource("BoxMesh_qfkme")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_tbl6t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

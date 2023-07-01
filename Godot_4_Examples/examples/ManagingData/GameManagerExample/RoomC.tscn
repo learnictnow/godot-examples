@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://examples/ManagingData/GameManagerExample/Room.gd" id="1_2rcnt"]
+[ext_resource type="PackedScene" path="res://GameManagerExample/Transporter.tscn" id="1_lk026"]
+[ext_resource type="PackedScene" path="res://examples/3D/3D_Rotate_In_Direction/player.tscn" id="3_8fqse"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t282a"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbaox"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tqva7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmsrm"]
+
+[sub_resource type="TextMesh" id="TextMesh_c4clj"]
+material = SubResource("StandardMaterial3D_dmsrm")
+text = "C"
+font_size = 127
+
+[node name="RoomC" type="Node3D"]
+script = ExtResource("1_2rcnt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_t282a")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbaox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_tqva7")
+
+[node name="Transporter" parent="." instance=ExtResource("1_lk026")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9539, 0.898674, 8.39433)
+TargetScene = "D"
+
+[node name="Text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65507, -3.10253)
+mesh = SubResource("TextMesh_c4clj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.594823, -0.565429, 0.571381, 0, 0.7108, 0.703395, -0.803857, -0.418395, 0.4228, 10.9386, 12.7579, 10.8403)
+
+[node name="Player" parent="." instance=ExtResource("3_8fqse")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.410544, 0.911841, 0, -0.911841, 0.410544, 0, 13.8581, 0)
