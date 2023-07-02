@@ -13,3 +13,4 @@ func _process(delta):
 func activate_exit():
 	$ExitPortal.process_mode = Node.PROCESS_MODE_INHERIT
 	$ExitPortal.visible = true
+

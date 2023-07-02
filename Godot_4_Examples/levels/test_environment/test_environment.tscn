@@ -77,10 +77,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.536776, -0.340253)
 transform = Transform3D(1, 0, 0, 0, 0.930181, 0.367102, 0, -0.367102, 0.930181, -0.452274, 2.7634, 4.35963)
 current = true
 
+[node name="SprintTimer" type="Timer" parent="Player"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource("3_ppbot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -12)
+
+[node name="Wall73" parent="Walls" instance=ExtResource("3_ppbot")]
+transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 5, 0.2, 1)
+
+[node name="Wall74" parent="Walls" instance=ExtResource("3_ppbot")]
+transform = Transform3D(0.939693, 1.49502e-08, -0.34202, 0.34202, -4.10753e-08, 0.939693, 0, -1, -4.37114e-08, 9.4, 1.7, 1)
 
 [node name="Wall2" parent="Walls" instance=ExtResource("3_ppbot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
@@ -335,6 +345,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bw7qj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPortal/Area3D"]
 shape = SubResource("SphereShape3D_d6x8s")
 
+[connection signal="timeout" from="Player/SprintTimer" to="Player" method="_on_sprint_timer_timeout"]
 [connection signal="body_entered" from="Ladder/LadderArea3D" to="Ladder" method="_on_ladder_area_3d_body_entered"]
 [connection signal="body_exited" from="Ladder/LadderArea3D" to="Ladder" method="_on_ladder_area_3d_body_exited"]
 [connection signal="body_entered" from="ExitPortal/Area3D" to="ExitPortal" method="_on_area_3d_body_entered"]
