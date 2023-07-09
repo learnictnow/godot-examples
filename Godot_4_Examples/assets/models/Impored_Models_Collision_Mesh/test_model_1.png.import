@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gchu754i0p2f"
-path.s3tc="res://.godot/imported/test_model_1.png-c755698ea06c11f61b673d6620dded2e.s3tc.ctex"
+path.s3tc="res://.godot/imported/test_model_1.png-5aa3557b72304696a5559e03606bab1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/Impored_Models_Collision_Mesh/test_model_1.png"
-dest_files=["res://.godot/imported/test_model_1.png-c755698ea06c11f61b673d6620dded2e.s3tc.ctex"]
+source_file="res://assets/models/Impored_Models_Collision_Mesh/test_model_1.png"
+dest_files=["res://.godot/imported/test_model_1.png-5aa3557b72304696a5559e03606bab1b.s3tc.ctex"]
 
 [params]
 
