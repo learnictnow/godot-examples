@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cixyvycp20bos"
-path="res://.godot/imported/car.gltf-533c35e12a85b3da361cf8e20f9fc908.scn"
+uid="uid://b2f0miuosg2co"
+path="res://.godot/imported/football_field.gltf-851071415dd755797f6a9eae36d0029d.scn"
 
 [deps]
 
-source_file="res://assets/Impored_Models_Collision_Mesh/car.gltf"
-dest_files=["res://.godot/imported/car.gltf-533c35e12a85b3da361cf8e20f9fc908.scn"]
+source_file="res://assets/models/Impored_Models_Collision_Mesh/football_field.gltf"
+dest_files=["res://.godot/imported/football_field.gltf-851071415dd755797f6a9eae36d0029d.scn"]
 
 [params]
 

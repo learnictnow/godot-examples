@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d28qrtwmkiuqc"
-path.s3tc="res://.godot/imported/test_model_3.png-dd2a510a18db695b6b1c13ea19ed55da.s3tc.ctex"
+uid="uid://fuwi4n5lu67a"
+path.s3tc="res://.godot/imported/football_field_0.png-8a32dff2f999c579bc8b6e2cccfff5fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/Impored_Models_Collision_Mesh/test_model_3.png"
-dest_files=["res://.godot/imported/test_model_3.png-dd2a510a18db695b6b1c13ea19ed55da.s3tc.ctex"]
+source_file="res://assets/models/Impored_Models_Collision_Mesh/football_field_0.png"
+dest_files=["res://.godot/imported/football_field_0.png-8a32dff2f999c579bc8b6e2cccfff5fc.s3tc.ctex"]
 
 [params]
 

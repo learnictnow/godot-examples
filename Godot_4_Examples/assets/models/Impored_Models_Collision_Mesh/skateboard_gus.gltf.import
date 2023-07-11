@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://csb5rjsn6s2v8"
-path="res://.godot/imported/skateboard_gus.gltf-6f91bf3ad876507462f83d51bb2fddf8.scn"
+path="res://.godot/imported/skateboard_gus.gltf-ff7bb668da5268fc2d2da5f0fd5f336c.scn"
 
 [deps]
 
-source_file="res://assets/Impored_Models_Collision_Mesh/skateboard_gus.gltf"
-dest_files=["res://.godot/imported/skateboard_gus.gltf-6f91bf3ad876507462f83d51bb2fddf8.scn"]
+source_file="res://assets/models/Impored_Models_Collision_Mesh/skateboard_gus.gltf"
+dest_files=["res://.godot/imported/skateboard_gus.gltf-ff7bb668da5268fc2d2da5f0fd5f336c.scn"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://g4mg3cnhoyb4"]
 
-[ext_resource type="PackedScene" uid="uid://dhtuyh0knv5ev" path="res://assets/Impored_Models_Collision_Mesh/test_model.gltf" id="2_4b7sy"]
-[ext_resource type="PackedScene" path="res://assets/Impored_Models_Collision_Mesh/player_fps_bob.tscn" id="2_dpnm7"]
+[ext_resource type="PackedScene" uid="uid://dhtuyh0knv5ev" path="res://assets/models/Impored_Models_Collision_Mesh/test_model.gltf" id="2_4b7sy"]
+[ext_resource type="PackedScene" path="res://assets/models/Impored_Models_Collision_Mesh/player_fps_bob.tscn" id="2_dpnm7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ep4r5"]
 

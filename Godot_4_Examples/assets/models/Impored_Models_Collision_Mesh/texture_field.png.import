@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbdhndh5i51h4"
-path="res://.godot/imported/texture3.png-b095796f4a04625bf59bbb83d6f03990.ctex"
+uid="uid://k8ujiwjpiicf"
+path="res://.godot/imported/texture_field.png-6c8759fcec054e1c35384f2d9d7f418f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Impored_Models_Collision_Mesh/texture3.png"
-dest_files=["res://.godot/imported/texture3.png-b095796f4a04625bf59bbb83d6f03990.ctex"]
+source_file="res://assets/models/Impored_Models_Collision_Mesh/texture_field.png"
+dest_files=["res://.godot/imported/texture_field.png-6c8759fcec054e1c35384f2d9d7f418f.ctex"]
 
 [params]
 
