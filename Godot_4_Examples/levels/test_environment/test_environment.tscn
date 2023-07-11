@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bih2my3o0eqqx"]
+[gd_scene load_steps=19 format=3 uid="uid://bih2my3o0eqqx"]
 
 [ext_resource type="Script" path="res://levels/test_environment/test_environment.gd" id="1_0etxe"]
 [ext_resource type="PackedScene" uid="uid://jw2d2wwq67bx" path="res://assets/models/kiwi/Kiwi.gltf" id="1_4xokt"]
 [ext_resource type="Script" path="res://levels/test_environment/Player.gd" id="1_bern1"]
+[ext_resource type="PackedScene" uid="uid://cnfhdokjqw4lk" path="res://assets/models/kiwi/kiwi-block.gltf" id="3_gde2m"]
 [ext_resource type="PackedScene" uid="uid://0lujohird0cf" path="res://levels/test_environment/Wall.tscn" id="3_ppbot"]
 [ext_resource type="Script" path="res://levels/test_environment/Ladder.gd" id="4_gceh4"]
 [ext_resource type="PackedScene" uid="uid://da30v4002w5vj" path="res://levels/test_environment/KeyItem.tscn" id="5_yhpt8"]
@@ -64,7 +65,13 @@ script = ExtResource("1_bern1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_sf6wn")
 
-[node name="Kiwi" parent="Player" instance=ExtResource("1_4xokt")]
+[node name="Model" type="Node3D" parent="Player"]
+
+[node name="Kiwiblock" parent="Player/Model" instance=ExtResource("3_gde2m")]
+transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, 0, 0, 0)
+visible = false
+
+[node name="Kiwiround" parent="Player/Model" instance=ExtResource("1_4xokt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
 
 [node name="CameraPivot" type="Node3D" parent="Player"]

@@ -15,18 +15,26 @@ var can_sprint = true
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if $CameraPivot/FPSCamera3D.current:
-		$Kiwi.visible = false
+		$Model.visible = false
 		
 
 func _input(event):
 	if event.is_action_pressed("CameraSwitch"):
-		$Kiwi.visible = !$Kiwi.visible
+		$Model.visible = !$Model.visible
 		if $CameraPivot/FPSCamera3D.current:
 			$CameraPivot/FPSCamera3D.current = false
 			$"CameraPivot/3RDCamera3D".current = true
 		else:
 			$CameraPivot/FPSCamera3D.current = true
 			$"CameraPivot/3RDCamera3D".current = false
+	
+	if event.is_action_pressed("model_switch"):
+		if $Model/Kiwiblock.visible:
+			$Model/Kiwiblock.visible = false
+			$Model/Kiwiround.visible = true
+		else:
+			$Model/Kiwiblock.visible = true
+			$Model/Kiwiround.visible = false
 	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -60,7 +68,7 @@ func _physics_process(delta):
 	if climbing:
 		direction = (transform.basis * Vector3(input_dir.x, -input_dir.y, 0)).normalized()
 	if direction:
-		$Kiwi/AnimationPlayer.play("animationmodelwalk", 1)
+		$Model/Kiwiround/AnimationPlayer.play("animationmodelwalk", 1)
 		velocity.x = direction.x * SPEED
 		if climbing:
 			if is_on_floor() and direction.y <= 0:
@@ -70,7 +78,7 @@ func _physics_process(delta):
 				
 		velocity.z = direction.z * SPEED
 	else:
-		$Kiwi/AnimationPlayer.play("animationmodelidle", 1)
+		$Model/Kiwiround/AnimationPlayer.play("animationmodelidle", 1)
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
