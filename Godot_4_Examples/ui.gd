@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$CenterContainer/VBoxContainer/Button_Test_Environment.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,4 +53,9 @@ func _on_button_3d_direction_movement_pressed():
 	
 func _on_button_test_environment_pressed():
 	get_tree().change_scene_to_file("res://levels/test_environment/test_environment.tscn")
+	pass # Replace with function body.
+
+
+func _on_button_quit_pressed():
+	get_tree().quit()
 	pass # Replace with function body.

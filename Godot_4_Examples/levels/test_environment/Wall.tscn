@@ -1,44 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://0lujohird0cf"]
-
-[ext_resource type="Shader" path="res://assets/shaders/warren_jennings_shader.gdshader" id="3_x0da2"]
+[gd_scene load_steps=3 format=3 uid="uid://0lujohird0cf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4e4xg"]
 size = Vector3(5, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_23pfy"]
 size = Vector3(5, 3, 1)
-
-[sub_resource type="Environment" id="Environment_5co3x"]
-background_mode = 1
-background_color = Color(0.32549, 1, 0.298039, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w01l"]
-render_priority = 1
-shader = ExtResource("3_x0da2")
-shader_parameter/edge_color = Color(1, 0, 0, 1)
-shader_parameter/threshold = 0.0
-shader_parameter/blend = 0.01
-shader_parameter/enable_depth_pass = true
-shader_parameter/threshold_depth = 1.0
-shader_parameter/blend_depth = 0.01
-shader_parameter/distance_fade_length = 50.0
-shader_parameter/distance_fade_blend = 20.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_nwucb"]
-material = SubResource("ShaderMaterial_8w01l")
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbmfs"]
-render_priority = 0
-shader = ExtResource("3_x0da2")
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/threshold = 2.0
-shader_parameter/blend = 0.01
-shader_parameter/enable_depth_pass = false
-shader_parameter/threshold_depth = 1.0
-shader_parameter/blend_depth = 0.01
-shader_parameter/distance_fade_length = 500.0
-shader_parameter/distance_fade_blend = 200.0
 
 [node name="Wall" type="Node3D"]
 
@@ -51,16 +17,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_23pfy")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.866025, -0.12941, 0.482963, -8.88178e-16, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 4.03407, 2.48236, 8.32697)
-environment = SubResource("Environment_5co3x")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, -5.96046e-08, 0, 7.45058e-09, 1, -1.49012e-08, 2.98023e-08, 0, 1, -1.43051e-06, 0, -2)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_nwucb")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_xbmfs")
