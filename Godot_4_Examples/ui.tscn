@@ -76,6 +76,12 @@ theme = ExtResource("2_ta51p")
 text = "3D Rotate Player in direction of movement"
 flat = true
 
+[node name="Button_Test_Environment" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ta51p")
+text = "Test Environment"
+flat = true
+
 [node name="Kiwi" type="Sprite2D" parent="."]
 position = Vector2(128, 520)
 texture = ExtResource("3_irk4p")
@@ -88,3 +94,4 @@ texture = ExtResource("3_irk4p")
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Twin_Stick" to="." method="_on_button_car_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_2D_Platformer" to="." method="_on_button_2d_platformer_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_3D_Direction_Movement" to="." method="_on_button_3d_direction_movement_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Test_Environment" to="." method="_on_button_test_environment_pressed"]

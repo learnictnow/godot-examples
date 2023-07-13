@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=6 format=3]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dpdevw6a7ktkc"]
 
 [ext_resource type="Texture2D" uid="uid://be8tna788yill" path="res://assets/1bit_platformer/Tilemap/monochrome_tilemap_transparent.png" id="1_6qpju"]
 [ext_resource type="PackedScene" uid="uid://da47pwex8u46u" path="res://examples/2D/tilemap_setup/CustomTileSetScene.tscn" id="2_gd1vx"]
