@@ -163,3 +163,9 @@ script = ExtResource("1_8cc7v")
 lerp_speed = 10.0
 target_path = NodePath("../..")
 offset = Vector3(0, 5, 5)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.197, -1.845)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.197, -1.845)

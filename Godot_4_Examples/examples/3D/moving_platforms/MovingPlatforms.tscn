@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=18 format=3 uid="uid://cx1jbitvkduxk"]
 
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/Player.gd" id="1_otxm3"]
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/test_environment.gd" id="1_ut8xo"]
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/Box.gd" id="3_k2tj2"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/test_environment.gd" id="1_81cdb"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/Player.gd" id="2_2ykw8"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/Box.gd" id="3_c3553"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4e3wh"]
 
@@ -71,11 +71,11 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_6im4d"]
 
 [node name="TestEnvironment" type="Node3D"]
-script = ExtResource("1_ut8xo")
+script = ExtResource("1_81cdb")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.17042, 0)
-script = ExtResource("1_otxm3")
+script = ExtResource("2_2ykw8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -109,7 +109,7 @@ spot_angle_attenuation = 0.353553
 
 [node name="BoxSpin" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33209, 1.5, 0)
-script = ExtResource("3_k2tj2")
+script = ExtResource("3_c3553")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BoxSpin"]
 mesh = SubResource("BoxMesh_ptusn")

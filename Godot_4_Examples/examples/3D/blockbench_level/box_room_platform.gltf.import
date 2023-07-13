@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://rr03dqsx6tih"
-path="res://.godot/imported/box_room_platform.gltf-bb6fa089661c1231ff819e2bcc37e2c8.scn"
+path="res://.godot/imported/box_room_platform.gltf-067db5627230cf5ed4785aee9b9c5ee4.scn"
 
 [deps]
 
-source_file="res://examples/3D/test_level/box_room_platform.gltf"
-dest_files=["res://.godot/imported/box_room_platform.gltf-bb6fa089661c1231ff819e2bcc37e2c8.scn"]
+source_file="res://examples/3D/blockbench_level/box_room_platform.gltf"
+dest_files=["res://.godot/imported/box_room_platform.gltf-067db5627230cf5ed4785aee9b9c5ee4.scn"]
 
 [params]
 

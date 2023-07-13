@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3]
 
-[ext_resource type="PackedScene" uid="uid://rr03dqsx6tih" path="res://examples/3D/test_level/box_room_platform.gltf" id="1_7ja8o"]
+[ext_resource type="PackedScene" uid="uid://rr03dqsx6tih" path="res://examples/3D/blockbench_level/box_room_platform.gltf" id="1_7ja8o"]
 [ext_resource type="PackedScene" path="res://examples/3D/player_fps/player_fps.tscn" id="2_rb2j3"]
 [ext_resource type="PackedScene" uid="uid://cjubu4wdr5efa" path="res://assets/models/enemy.tscn" id="4_0syjv"]
 [ext_resource type="PackedScene" uid="uid://c20lmxuogkmmj" path="res://assets/models/platform.tscn" id="5_7bff7"]
-[ext_resource type="Animation" uid="uid://ncfl71dhbxwc" path="res://examples/3D/test_level/animationmodellevel_animations.res" id="5_7grwn"]
+[ext_resource type="Animation" uid="uid://ncfl71dhbxwc" path="res://examples/3D/blockbench_level/animationmodellevel_animations.res" id="5_7grwn"]
 [ext_resource type="PackedScene" uid="uid://c7eio0sxhqtuy" path="res://assets/models/box.tscn" id="6_uma73"]
 
 [sub_resource type="Environment" id="Environment_o7t13"]

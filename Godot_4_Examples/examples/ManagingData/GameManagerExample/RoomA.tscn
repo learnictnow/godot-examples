@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3]
 
-[ext_resource type="PackedScene" path="res://GameManagerExample/Transporter.tscn" id="1_2g6bo"]
+[ext_resource type="PackedScene" path="res://examples/ManagingData/GameManagerExample/Transporter.tscn" id="1_2g6bo"]
 [ext_resource type="Script" path="res://examples/ManagingData/GameManagerExample/Room.gd" id="1_8wy48"]
 [ext_resource type="PackedScene" path="res://examples/3D/3D_Rotate_In_Direction/player.tscn" id="3_1mo1w"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3]
 
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/test_environment.gd" id="1_6qy3w"]
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/Player.gd" id="2_otgk7"]
-[ext_resource type="Script" path="res://examples/3D/TestEnvironment/Box.gd" id="3_34leg"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/test_environment.gd" id="1_6qy3w"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/Player.gd" id="2_otgk7"]
+[ext_resource type="Script" path="res://examples/3D/moving_platforms/Box.gd" id="3_34leg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4e3wh"]
 

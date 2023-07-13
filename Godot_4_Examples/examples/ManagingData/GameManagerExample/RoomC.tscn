@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://examples/ManagingData/GameManagerExample/Room.gd" id="1_2rcnt"]
-[ext_resource type="PackedScene" path="res://GameManagerExample/Transporter.tscn" id="1_lk026"]
+[ext_resource type="PackedScene" path="res://examples/ManagingData/GameManagerExample/Transporter.tscn" id="1_lk026"]
 [ext_resource type="PackedScene" path="res://examples/3D/3D_Rotate_In_Direction/player.tscn" id="3_8fqse"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t282a"]

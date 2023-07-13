@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://4xy2fadu3nmr"]
 
-[ext_resource type="PackedScene" uid="uid://cochdfdmimylo" path="res://examples/3D/player_vehicle/Player_Vehicle.tscn" id="1_ontfo"]
+[ext_resource type="PackedScene" uid="uid://rxdjfkgvuvdk" path="res://examples/3D/player_vehicle/Player_Vehicle.tscn" id="1_ontfo"]
 [ext_resource type="PackedScene" uid="uid://ccuprhhxph2xg" path="res://assets/models/ball.tscn" id="1_t36fp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2kgec"]

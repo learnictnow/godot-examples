@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://is605xe5o1xw"]
 
 [ext_resource type="Script" path="res://examples/3D/3D_Rotate_In_Direction/Player.gd" id="1_0iteg"]
 

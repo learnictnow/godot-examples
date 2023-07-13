@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://rc6rbdtqr7h0"]
 
 [ext_resource type="PackedScene" uid="uid://di3koj6akqiv" path="res://levels/building_group.tscn" id="1_hp1ej"]
-[ext_resource type="PackedScene" uid="uid://b4oxgyv081exs" path="res://player_point_and_click_movement/player_rts.tscn" id="2_05j6q"]
+[ext_resource type="PackedScene" uid="uid://b4oxgyv081exs" path="res://examples/3D/player_point_and_click_movement/player_rts.tscn" id="2_05j6q"]
 
 [sub_resource type="Environment" id="Environment_6q4ul"]
 background_mode = 2
