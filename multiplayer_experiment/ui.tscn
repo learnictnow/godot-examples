@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dj3hr38d5shdo"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Net" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="Options" type="HBoxContainer" parent="Net"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Net/Options"]
+layout_mode = 2
+text = "Direct:"
+
+[node name="Host" type="Button" parent="Net/Options"]
+layout_mode = 2
+text = "Host"
+
+[node name="Connect" type="Button" parent="Net/Options"]
+layout_mode = 2
+text = "Connect
+"
+
+[node name="TextEdit" type="TextEdit" parent="Net/Options"]
+layout_mode = 2
+text = "127.0.0.1"
