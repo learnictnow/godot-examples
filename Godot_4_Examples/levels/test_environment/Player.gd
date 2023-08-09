@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const SPRINT_MULTIPLYER = 2.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

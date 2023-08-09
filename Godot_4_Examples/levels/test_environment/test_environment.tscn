@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bih2my3o0eqqx"]
+[gd_scene load_steps=23 format=3 uid="uid://bih2my3o0eqqx"]
 
 [ext_resource type="Script" path="res://levels/test_environment/test_environment.gd" id="1_0etxe"]
 [ext_resource type="PackedScene" uid="uid://jw2d2wwq67bx" path="res://assets/models/kiwi/Kiwi.gltf" id="1_4xokt"]
@@ -39,6 +39,18 @@ albedo_color = Color(1, 1, 0.278431, 0.654902)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d6x8s"]
 radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngve3"]
+size = Vector3(2, 2, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_16fos"]
+size = Vector3(2, 2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k34ow"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvlpo"]
+size = Vector3(3, 3, 3)
 
 [node name="TestEnvironment" type="Node3D"]
 script = ExtResource("1_0etxe")
@@ -351,6 +363,29 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bw7qj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPortal/Area3D"]
 shape = SubResource("SphereShape3D_d6x8s")
+
+[node name="PhysicsBox" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79277, 1.57136, 0)
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBox"]
+shape = SubResource("BoxShape3D_ngve3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsBox"]
+mesh = SubResource("BoxMesh_16fos")
+
+[node name="PhysicsBox2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23407, 1.57136, 0)
+collision_layer = 2
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBox2"]
+shape = SubResource("BoxShape3D_k34ow")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsBox2"]
+mesh = SubResource("BoxMesh_yvlpo")
 
 [connection signal="timeout" from="Player/SprintTimer" to="Player" method="_on_sprint_timer_timeout"]
 [connection signal="body_entered" from="Ladder/LadderArea3D" to="Ladder" method="_on_ladder_area_3d_body_entered"]
