@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5pc3spo6mgoq"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_ld2nr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ld2nr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.0
+offset_right = 263.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Super Bad Game"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 142.0
+offset_right = 125.0
+offset_bottom = 269.0
+grow_horizontal = 2
+focus_next = NodePath(".")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 292.0
+offset_right = 659.0
+offset_bottom = 396.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

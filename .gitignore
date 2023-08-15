@@ -5,6 +5,8 @@ export.cfg
 */export.cfg
 export_presets.cfg
 */export_presets.cfg
+*/builds/
+*/build/
 
 # Imported translations (automatically generated from CSV files)
 *.translation

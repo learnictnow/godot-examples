@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtms8ikfujxah"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_jd3tu"]
+[ext_resource type="PackedScene" uid="uid://byechy4dkopcp" path="res://player.tscn" id="2_6ro0i"]
+[ext_resource type="Material" uid="uid://6iq0mxgwv3xq" path="res://player1.tres" id="3_qcg3l"]
+[ext_resource type="Material" uid="uid://dxsw7u5bm4aty" path="res://player2.tres" id="4_onssy"]
+[ext_resource type="Material" uid="uid://m3hoyljuwnw" path="res://player3.tres" id="5_nasel"]
+[ext_resource type="Material" uid="uid://drutsvjx40d41" path="res://player4.tres" id="6_r25k0"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2esss"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p6v64"]
+size = Vector2(20, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ufc2"]
+albedo_color = Color(0.345098, 0.788235, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vpsdi"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_auobw"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k3nf"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.596078)
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_jd3tu")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Timer" type="Timer" parent="UI"]
+one_shot = true
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Time: "
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_2esss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_p6v64")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ufc2")
+
+[node name="Player" parent="." instance=ExtResource("2_6ro0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14122, 91.9898)
+playercolours = Array[StandardMaterial3D]([ExtResource("3_qcg3l"), ExtResource("4_onssy"), ExtResource("5_nasel"), ExtResource("6_r25k0")])
+
+[node name="EndPoint" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -99.5866)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndPoint"]
+shape = SubResource("BoxShape3D_vpsdi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EndPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33565, 0)
+mesh = SubResource("BoxMesh_auobw")
+surface_material_override/0 = SubResource("StandardMaterial3D_7k3nf")
+
+[connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="EndPoint" to="." method="_on_end_point_body_entered"]

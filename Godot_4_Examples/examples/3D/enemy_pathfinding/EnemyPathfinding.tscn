@@ -1,0 +1,126 @@
+[gd_scene load_steps=14 format=3 uid="uid://bn2jfxcvwejoc"]
+
+[ext_resource type="Script" path="res://examples/3D/enemy_pathfinding/Player.gd" id="1_x85y3"]
+[ext_resource type="Script" path="res://examples/3D/enemy_pathfinding/Enemy.gd" id="2_p44qc"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jge2o"]
+vertices = PackedVector3Array(-0.75, 0.5, -0.75, -0.75, 0.5, 0.75, 0.75, 0.5, 0.75, 0.75, 0.5, -0.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 0.25
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0ejcj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y6ybc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xpoq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o70ok"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xbpsr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bmgy0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o4r6b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rl0te"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etix6"]
+albedo_color = Color(0.670588, 0, 0, 1)
+metallic = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bna5a"]
+size = Vector3(0.99438, 1, 3.04701)
+
+[node name="EnemyPathfinding" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.428041, 1.28898)
+navigation_mesh = SubResource("NavigationMesh_jge2o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_0ejcj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("PlaneMesh_y6ybc")
+skeleton = NodePath("../..")
+
+[node name="Climb" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0304043, 0.295763, -1.3973)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Climb"]
+shape = SubResource("BoxShape3D_8xpoq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Climb"]
+mesh = SubResource("BoxMesh_o70ok")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Climb"]
+
+[node name="WallCollision" type="CollisionShape3D" parent="NavigationRegion3D/Climb/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0680971)
+shape = SubResource("BoxShape3D_8xpoq")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32891, 2.90978, 2.86723)
+script = ExtResource("1_x85y3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_xbpsr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CylinderMesh_bmgy0")
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/CameraPivot"]
+
+[node name="Enemy" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28486, 1.71737, 1.24478)
+script = ExtResource("2_p44qc")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("CapsuleShape3D_o4r6b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("BoxMesh_rl0te")
+surface_material_override/0 = SubResource("StandardMaterial3D_etix6")
+
+[node name="VisionArea3D" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/VisionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.45791)
+shape = SubResource("BoxShape3D_bna5a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.95613, 16.2688)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+
+[node name="Waypoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.513481, 0, 0.770232)
+
+[node name="Marker3DTR" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49067, 2.98254, -3.28477)
+
+[node name="Marker3DTL" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41275, 2.98254, -3.28477)
+
+[node name="Marker3DBL" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81978, 2.98254, 4.36766)
+
+[node name="Marker3DBR" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2966, 2.98254, 3.66262)
+
+[connection signal="body_entered" from="NavigationRegion3D/Climb/Area3D" to="Player" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Climb/Area3D" to="Player" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Enemy/VisionArea3D" to="Enemy" method="_on_vision_area_3d_body_entered"]
+[connection signal="body_exited" from="Enemy/VisionArea3D" to="Enemy" method="_on_vision_area_3d_body_exited"]

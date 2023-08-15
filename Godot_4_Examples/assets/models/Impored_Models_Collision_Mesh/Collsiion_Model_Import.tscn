@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://g4mg3cnhoyb4"]
+
+[ext_resource type="PackedScene" uid="uid://dhtuyh0knv5ev" path="res://assets/models/Impored_Models_Collision_Mesh/test_model.gltf" id="2_4b7sy"]
+[ext_resource type="PackedScene" path="res://assets/models/Impored_Models_Collision_Mesh/player_fps_bob.tscn" id="2_dpnm7"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ep4r5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b07di"]
+size = Vector2(20, 20)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ww4av"]
+inner_radius = 4.461
+outer_radius = 8.923
+
+[sub_resource type="BoxMesh" id="BoxMesh_v2k3k"]
+
+[node name="CollisionTest" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ep4r5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_b07di")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.153589, 0.988135, 0, -0.988135, 0.153589, 0, 0, 0, 1, -7.34748, 4.2704, -0.548386)
+mesh = SubResource("TorusMesh_ww4av")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.53732, -3.69679)
+mesh = SubResource("BoxMesh_v2k3k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.534839, 0.844954, 0, -0.844954, -0.534839, 1.36036, 7.15391, 0)
+light_energy = 1.67
+light_indirect_energy = 2.829
+light_angular_distance = 21.66
+
+[node name="test_model" parent="." instance=ExtResource("2_4b7sy")]
+transform = Transform3D(-6.91248, 0, -1.10349, 0, 7, 0, 1.10349, 0, -6.91248, -0.410579, 0, -8.68409)
+
+[node name="Player" parent="." instance=ExtResource("2_dpnm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63152, 2.54638, 2.7939)
