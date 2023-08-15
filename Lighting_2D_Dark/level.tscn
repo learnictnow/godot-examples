@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1kry1tgcl3o"]
+
+[ext_resource type="Script" path="res://PlayerLight.gd" id="1_f4t3d"]
+[ext_resource type="Texture2D" uid="uid://b8ax8vbd115mo" path="res://icon.svg" id="1_wjany"]
+[ext_resource type="Texture2D" uid="uid://dwhl7wp6e4wra" path="res://light2d.png" id="2_c5b46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abiok"]
+size = Vector2(125, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmris"]
+size = Vector2(125, 125)
+
+[sub_resource type="Environment" id="Environment_8hm1p"]
+background_mode = 3
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_nu8ft"]
+
+[node name="Level" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-13, 592)
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerLight" type="CharacterBody2D" parent="."]
+script = ExtResource("1_f4t3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerLight"]
+texture = ExtResource("1_wjany")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLight"]
+shape = SubResource("RectangleShape2D_abiok")
+
+[node name="PointLight2D" type="PointLight2D" parent="PlayerLight"]
+texture = ExtResource("2_c5b46")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerLight"]
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(-13, 592)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
+scale = Vector2(19.56, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fmris")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D"]
+texture = ExtResource("1_wjany")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level"]
+position = Vector2(1361, -288)
+scale = Vector2(19.56, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_fmris")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D2"]
+texture = ExtResource("1_wjany")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8hm1p")
+camera_attributes = SubResource("CameraAttributesPractical_nu8ft")
