@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://cp56wiqmv8lpx"]
 
 [ext_resource type="Script" path="res://examples/3D/path_follow_3d/MoveMe.gd" id="1_54q1f"]
 
@@ -71,7 +71,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_diih4")
 curve = SubResource("Curve3D_hxt68")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Node3D/Path3D"]
-transform = Transform3D(0.647566, -0.648445, -0.400219, -0.707587, -0.706626, -6.12934e-09, -0.282806, 0.283189, -0.916418, -55.8293, 0, -23.4647)
+transform = Transform3D(-0.647545, -0.648467, 0.400219, 0.70761, -0.706602, -4.21468e-08, 0.282796, 0.283199, 0.916418, -55.8293, 0, -23.4647)
 progress = 597.337
 
 [node name="MoveMe" type="Node3D" parent="Node3D/Path3D/PathFollow3D"]
