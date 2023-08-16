@@ -148,6 +148,10 @@ previous_colour={
 ]
 }
 
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"

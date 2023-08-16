@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const SPRINT_MULTIPLYER = 2.0
-const JUMP_VELOCITY = 10
+const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var climbing = false
 var can_sprint = true
 
+var push_force = 25.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -88,6 +89,12 @@ func _physics_process(delta):
 			velocity.z = velocity.z * SPRINT_MULTIPLYER
 
 	move_and_slide()
+	
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func manage_climbing(is_climbing: bool):
 	climbing = is_climbing

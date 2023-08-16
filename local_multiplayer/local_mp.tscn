@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0yjowb4fu1i4"]
+
+[ext_resource type="Script" path="res://P1.gd" id="1_fxag4"]
+[ext_resource type="Script" path="res://P2.gd" id="2_5pyw2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_in0wu"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7m4ym"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dka7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um4pt"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vjv5p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kovpb"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_in0wu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_7m4ym")
+
+[node name="P1" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28764, 0)
+script = ExtResource("1_fxag4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P1"]
+mesh = SubResource("CapsuleMesh_dka7d")
+surface_material_override/0 = SubResource("StandardMaterial3D_um4pt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P1"]
+shape = SubResource("CapsuleShape3D_vjv5p")
+
+[node name="P2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74936, 1.28764, 0)
+script = ExtResource("2_5pyw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P2"]
+mesh = SubResource("CapsuleMesh_dka7d")
+surface_material_override/0 = SubResource("StandardMaterial3D_kovpb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P2"]
+shape = SubResource("CapsuleShape3D_vjv5p")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72053, 7.05731)

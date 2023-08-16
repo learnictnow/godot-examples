@@ -109,13 +109,13 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.513481, 0, 0.770232)
 
 [node name="Marker3DTR" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49067, 2.98254, -3.28477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37607, 2.98254, -0.708312)
 
 [node name="Marker3DTL" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41275, 2.98254, -3.28477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81886, 2.98254, -3.28477)
 
 [node name="Marker3DBL" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81978, 2.98254, 4.36766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74775, 2.98254, -0.659506)
 
 [node name="Marker3DBR" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2966, 2.98254, 3.66262)
