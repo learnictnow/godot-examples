@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://be7bdswxej3ej"]
+
+[ext_resource type="Texture2D" uid="uid://ribrhne1acn5" path="res://icon.svg" id="1_34alw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iygsk"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_q4j4b"]
+mesh = SubResource("PlaneMesh_iygsk")
+image_size = Vector2(50, 50)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.541176, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(537, 402)
+texture = ExtResource("1_34alw")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+shadow_enabled = true
+texture = SubResource("MeshTexture_q4j4b")
+texture_scale = 5.28

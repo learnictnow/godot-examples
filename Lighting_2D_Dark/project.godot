@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Kiwi Crush"
-run/main_scene="res://level.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/name="Lighting_2D_Dark"
+config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

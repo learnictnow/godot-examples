@@ -10,11 +10,6 @@ config_version=5
 
 [application]
 
-config/name="Kiwi Crush"
-run/main_scene="res://level.tscn"
+config/name="multiplayer_experiment"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c671s62jj88s4"]
 
 [ext_resource type="PackedScene" uid="uid://covr2b8cdky7d" path="res://assets/models/plane.glb" id="1_2yxv3"]
 [ext_resource type="Script" path="res://examples/3D/player_point_and_click_movement/player_rts.gd" id="1_wln2m"]
