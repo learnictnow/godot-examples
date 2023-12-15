@@ -3,8 +3,16 @@ extends Node
 @export var player : PackedScene
 @export var map : PackedScene
 
+
+
+var player_color: StandardMaterial3D
+@export var playercolours: Array[StandardMaterial3D] = []
+
 # Port mapping for online multiplayer
 func _ready():
+	var temp_col_index = randi_range(0,playercolours.size()-1)
+	player_color = playercolours[temp_col_index]
+	$Menu/MarginContainer/VBoxContainer/ItemList.select(2)
 	var upnp = UPNP.new()
 	upnp.discover()
 	var result = upnp.add_port_mapping(9999)
@@ -38,6 +46,8 @@ func load_game():
 func add_player(id):
 	var player_instance = player.instantiate()
 	player_instance.name = str(id)
+	print(player_color)
+	player_instance.set_color(player_color)
 	%SpawnPosition.add_child(player_instance)
 
 @rpc("any_peer")
@@ -49,3 +59,11 @@ func server_offline():
 	%Menu.show()
 	if %MapInstance.get_child(0):
 		%MapInstance.get_child(0).queue_free()
+
+
+func _on_item_list_item_selected(index):
+	player_color = playercolours[index]
+	
+	print(player_color)
+		
+	pass # Replace with function body.

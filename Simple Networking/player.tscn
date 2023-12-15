@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmqs76oj7hyhh"]
+[gd_scene load_steps=6 format=3 uid="uid://dmqs76oj7hyhh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_hc75s"]
-[ext_resource type="Texture2D" uid="uid://df0ooqpnic0cc" path="res://icon.svg" id="2_xusq6"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_eswml"]
 properties/0/path = NodePath(".:position")
@@ -9,24 +8,29 @@ properties/0/spawn = true
 properties/0/sync = true
 properties/0/watch = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xieyc"]
-radius = 57.85
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unv3o"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_biruf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkvec"]
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_hc75s")
 
 [node name="Authority" type="ColorRect" parent="."]
+visible = false
 offset_left = -69.0
 offset_top = -69.0
 offset_right = 69.0
 offset_bottom = 69.0
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xusq6")
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_eswml")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xieyc")
+[node name="CollisionShape2D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_unv3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_biruf")
+surface_material_override/0 = SubResource("StandardMaterial3D_pkvec")

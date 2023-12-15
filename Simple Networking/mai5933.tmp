@@ -88,9 +88,7 @@ layout_mode = 2
 [node name="To" type="LineEdit" parent="Menu/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "127.0.0.1"
 placeholder_text = "Enter server IP"
-alignment = 1
 
 [node name="JoinButton" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
