@@ -1,0 +1,190 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.learnictnow.example_vr"
+4    android:installLocation="auto"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+10        android:targetSdkVersion="33" />
+11
+12    <supports-screens
+12-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:9:5-13:40
+13        android:largeScreens="true"
+13-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:12:9-36
+14        android:normalScreens="true"
+14-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:11:9-37
+15        android:smallScreens="true"
+15-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:10:9-36
+16        android:xlargeScreens="true" />
+16-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:13:9-37
+17
+18    <uses-feature
+18-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:15:5-17:35
+19        android:glEsVersion="0x00030000"
+19-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:16:9-41
+20        android:required="true" />
+20-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:17:9-32
+21    <uses-feature
+21-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:11:5-132
+22        android:name="android.hardware.vulkan.level"
+22-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:11:40-84
+23        android:required="false"
+23-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:11:85-109
+24        android:version="1" />
+24-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:11:110-129
+25    <uses-feature
+25-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:12:5-140
+26        android:name="android.hardware.vulkan.version"
+26-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:12:40-86
+27        android:required="true"
+27-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:12:87-110
+28        android:version="0x400003" />
+28-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:12:111-137
+29    <uses-feature
+29-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:9:5-12:31
+30        android:name="android.hardware.vr.headtracking"
+30-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:10:9-56
+31        android:required="true"
+31-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:11:9-32
+32        android:version="1" />
+32-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:12:9-28
+33
+34    <application
+34-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:19:5-52:19
+35        android:allowBackup="false"
+35-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:21:9-36
+36        android:appCategory="game"
+36-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:23:9-35
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.2.0] C:\Users\andre\.gradle\caches\transforms-3\9bcb1a65f5938aad264f4d73e9a06f28\transformed\core-1.2.0\AndroidManifest.xml:24:18-86
+38        android:debuggable="true"
+39        android:extractNativeLibs="false"
+40        android:hasFragileUserData="false"
+40-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:25:9-43
+41        android:icon="@mipmap/icon"
+41-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:22:9-36
+42        android:isGame="true"
+42-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:24:9-30
+43        android:label="@string/godot_project_name_string"
+43-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:20:9-58
+44        android:requestLegacyExternalStorage="false" >
+44-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:26:9-53
+45        <activity
+45-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:34:9-50:20
+46            android:name="com.godot.game.GodotApp"
+46-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:35:13-37
+47            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+47-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:42:13-141
+48            android:excludeFromRecents="false"
+48-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:39:13-47
+49            android:exported="true"
+49-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:40:13-36
+50            android:label="@string/godot_project_name_string"
+50-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:36:13-62
+51            android:launchMode="singleInstance"
+51-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:38:13-48
+52            android:resizeableActivity="true"
+52-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:43:13-47
+53            android:screenOrientation="landscape"
+53-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:41:13-50
+54            android:theme="@style/GodotAppSplashTheme" >
+54-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:37:13-55
+55            <intent-filter>
+55-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:24:13-38:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:47:17-69
+56-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:47:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:48:17-77
+58-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\AndroidManifest.xml:48:27-74
+59
+60                <!--
+61                Enable access to OpenXR on Oculus mobile devices, no-op on other Android
+62                platforms.
+63                -->
+64                <category android:name="com.oculus.intent.category.VR" />
+64-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:30:17-74
+64-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:30:27-71
+65
+66                <!--
+67                OpenXR category tag to indicate the activity starts in an immersive OpenXR mode. 
+68                See https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#android-runtime-category.
+69                -->
+70                <category android:name="org.khronos.openxr.intent.category.IMMERSIVE_HMD" />
+70-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:34:17-93
+70-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:34:27-90
+71
+72                <!-- Enable VR access on HTC Vive Focus devices. -->
+73                <category android:name="com.htc.intent.category.VRAPP" />
+73-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:37:17-74
+73-->D:\Github\godot-examples\VR_Oculus_Quest_Example\android\build\src\debug\AndroidManifest.xml:37:27-71
+74            </intent-filter>
+75        </activity>
+76        <!-- Records the version of the Godot editor used for building -->
+77        <meta-data
+78            android:name="org.godotengine.editor.version"
+79            android:value="4.1.stable" /> <!-- Records the version of the Godot library -->
+80        <meta-data
+80-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:9-16:44
+81            android:name="org.godotengine.library.version"
+81-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:15:13-59
+82            android:value="4.1.0.stable" />
+82-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:13-41
+83
+84        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+84-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-80
+84-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:18-77
+85
+86        <activity
+86-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:9-24:75
+87            android:name="org.godotengine.godot.utils.ProcessPhoenix"
+87-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-70
+88            android:exported="false"
+88-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-37
+89            android:process=":phoenix"
+89-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-39
+90            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+90-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-72
+91
+92        <provider
+92-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:9-34:20
+93            android:name="androidx.core.content.FileProvider"
+93-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-62
+94            android:authorities="com.learnictnow.example_vr.fileprovider"
+94-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-64
+95            android:exported="false"
+95-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-37
+96            android:grantUriPermissions="true" >
+96-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:13-47
+97            <meta-data
+97-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:13-33:64
+98                android:name="android.support.FILE_PROVIDER_PATHS"
+98-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:32:17-67
+99                android:resource="@xml/godot_provider_paths" />
+99-->[godot-lib.template_debug.aar] C:\Users\andre\.gradle\caches\transforms-3\9c4b9aee53deacd0a8523d91f0bff37e\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:33:17-61
+100        </provider>
+101
+102        <meta-data
+102-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:15:9-17:82
+103            android:name="org.godotengine.plugin.v1.GodotOpenXRMeta"
+103-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:16:13-69
+104            android:value="org.godotengine.openxrloaders.meta.GodotOpenXRMeta" />
+104-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:17:13-79
+105        <meta-data
+105-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:18:9-20:53
+106            android:name="com.oculus.supportedDevices"
+106-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:19:13-55
+107            android:value="quest|quest2|questpro" />
+107-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:20:13-50
+108        <meta-data
+108-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:21:9-23:36
+109            android:name="com.oculus.vr.focusaware"
+109-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:22:13-52
+110            android:value="true" />
+110-->[godotopenxrmeta-debug.aar] C:\Users\andre\.gradle\caches\transforms-3\e5069eafbf6230d44792fd5a41f0620e\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:23:13-33
+111    </application>
+112
+113</manifest>

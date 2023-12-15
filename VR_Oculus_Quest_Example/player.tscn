@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8dop8j0nqg4c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nyrgf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7f6h"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bnrjj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj24c"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Player" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_nyrgf")
+surface_material_override/0 = SubResource("StandardMaterial3D_d7f6h")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="XROrigin3D/XRController3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRController3D/CharacterBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_bnrjj")
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+tracker = &"right_hand"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRController3D2"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_nyrgf")
+skeleton = NodePath("../../XRController3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_yj24c")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="XROrigin3D/XRController3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRController3D2/CharacterBody3D2"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_bnrjj")
